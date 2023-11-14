@@ -12,6 +12,8 @@ import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
+import javax.swing.ImageIcon;
+import javax.swing.JComboBox;
 
 public class LoginFrame extends JFrame {
 
@@ -42,8 +44,9 @@ public class LoginFrame extends JFrame {
 	 * Create the frame.
 	 */
 	public LoginFrame() {
+		setTitle("Hoş Geldiniz");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 651, 459);
+		setBounds(100, 100, 800, 500);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -51,12 +54,16 @@ public class LoginFrame extends JFrame {
 		contentPane.setLayout(null);
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBounds(10, 98, 602, 314);
+		tabbedPane.setBounds(10, 98, 766, 355);
 		contentPane.add(tabbedPane);
 		
 		JPanel UserPanel = new JPanel();
 		tabbedPane.addTab("Kullanıcı", null, UserPanel, null);
 		UserPanel.setLayout(null);
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setBounds(29, 69, 75, 21);
+		UserPanel.add(comboBox);
 		
 		JPanel CompanyPanel = new JPanel();
 		CompanyPanel.setLayout(null);
@@ -122,10 +129,10 @@ public class LoginFrame extends JFrame {
 		btnNewButton.setBounds(203, 214, 171, 50);
 		AdminPanel.add(btnNewButton);
 		
-		JLabel lblNewLabel = new JLabel("Giriş Yapınız");
+		JLabel lblNewLabel = new JLabel("Hoş Geldiniz");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 20));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(81, 10, 462, 69);
+		lblNewLabel.setBounds(10, 10, 766, 77);
 		contentPane.add(lblNewLabel);
 	}
 }
