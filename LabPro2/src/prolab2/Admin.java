@@ -1,7 +1,5 @@
 package prolab2;
 
-import java.sql.*;
-
 public class Admin extends User{
 	public static void main(String args[]) {
 //		Class.forName("com.mysql.cj.jdbc.Driver");
