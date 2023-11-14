@@ -4,7 +4,7 @@ public class Admin extends User{
 	public static void main(String args[]) {
 		
 // 		metotlar user'dan override edilecek
-// 		Admin panelinde kullanıcı adı ve ¸sifre ile giri¸s yapılmalıdır. Sistemde sadece 1 adet admin bulunmalıdır.
+// 		Admin panelinde kullanıcı adı ve ¸sifre ile giris yapılmalıdır. Sistemde sadece 1 adet admin bulunmalıdır.
 // 		Var olan firmalar g¨or¨unt¨ulenebilir.
 // 		Yeni bir firma kaydı yapılabilir.
 // 		Firma kaydı silinebilir.
