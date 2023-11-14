@@ -138,10 +138,6 @@ public class Vehicle30 extends JFrame {
 		contentPane.add(btnNewButton_2_1_1_1);
 		
 		JButton btnNewButton_3_1_1_1 = new JButton("2");
-		btnNewButton_3_1_1_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		btnNewButton_3_1_1_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnNewButton_3_1_1_1.setBounds(632, 158, 50, 50);
 		contentPane.add(btnNewButton_3_1_1_1);
@@ -187,10 +183,6 @@ public class Vehicle30 extends JFrame {
 		contentPane.add(btnNewButton_3_1_3);
 		
 		JButton btnNewButton_2_1_1_2 = new JButton("4");
-		btnNewButton_2_1_1_2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		btnNewButton_2_1_1_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnNewButton_2_1_1_2.setBounds(572, 294, 50, 50);
 		contentPane.add(btnNewButton_2_1_1_2);
