@@ -14,6 +14,8 @@ import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
+import java.awt.Color;
 
 public class LoginFrame extends JFrame {
 
@@ -62,8 +64,65 @@ public class LoginFrame extends JFrame {
 		UserPanel.setLayout(null);
 		
 		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(29, 69, 75, 21);
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"", "İstanbul", "Kocaeli", "Bilecik", "Ankara", "Eskişehir", "Konya"}));
+		comboBox.setBounds(32, 49, 103, 35);
 		UserPanel.add(comboBox);
+		
+		JComboBox comboBox_1 = new JComboBox();
+		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"", "İstanbul", "Kocaeli", "Bilecik", "Ankara", "Eskişehir", "Konya"}));
+		comboBox_1.setBounds(166, 49, 103, 35);
+		UserPanel.add(comboBox_1);
+		
+		JComboBox comboBox_2 = new JComboBox();
+		comboBox_2.setModel(new DefaultComboBoxModel(new String[] {"", "4", "5", "6", "7", "8", "9", "10"}));
+		comboBox_2.setBounds(374, 49, 103, 35);
+		UserPanel.add(comboBox_2);
+		
+		JComboBox comboBox_3 = new JComboBox();
+		comboBox_3.setModel(new DefaultComboBoxModel(new String[] {"Kasım"}));
+		comboBox_3.setBounds(500, 49, 103, 35);
+		UserPanel.add(comboBox_3);
+		
+		JComboBox comboBox_4 = new JComboBox();
+		comboBox_4.setModel(new DefaultComboBoxModel(new String[] {"2023"}));
+		comboBox_4.setBounds(622, 49, 103, 35);
+		UserPanel.add(comboBox_4);
+		
+		JLabel lblNewLabel_2 = new JLabel("Kalkış");
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_2.setBounds(32, 10, 103, 29);
+		UserPanel.add(lblNewLabel_2);
+		
+		JLabel lblNewLabel_2_1 = new JLabel("Varış");
+		lblNewLabel_2_1.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		lblNewLabel_2_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_2_1.setBounds(166, 10, 103, 29);
+		UserPanel.add(lblNewLabel_2_1);
+		
+		JLabel lblNewLabel_2_2 = new JLabel("Gün");
+		lblNewLabel_2_2.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		lblNewLabel_2_2.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_2_2.setBounds(374, 10, 103, 29);
+		UserPanel.add(lblNewLabel_2_2);
+		
+		JLabel lblNewLabel_2_3 = new JLabel("Ay");
+		lblNewLabel_2_3.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		lblNewLabel_2_3.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_2_3.setBounds(500, 10, 103, 29);
+		UserPanel.add(lblNewLabel_2_3);
+		
+		JLabel lblNewLabel_2_4 = new JLabel("Yıl");
+		lblNewLabel_2_4.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		lblNewLabel_2_4.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_2_4.setBounds(622, 10, 103, 29);
+		UserPanel.add(lblNewLabel_2_4);
+		
+		JLabel lblNewLabel_3 = new JLabel("→");
+		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_3.setBounds(134, 49, 32, 35);
+		UserPanel.add(lblNewLabel_3);
 		
 		JPanel CompanyPanel = new JPanel();
 		CompanyPanel.setLayout(null);
@@ -93,6 +152,7 @@ public class LoginFrame extends JFrame {
 		CompanyPanel.add(lblNewLabel_1_1_1);
 		
 		JButton btnNewButton_1 = new JButton("Giriş Yap");
+		btnNewButton_1.setBackground(getForeground());
 		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 20));
 		btnNewButton_1.setBounds(203, 214, 171, 50);
 		CompanyPanel.add(btnNewButton_1);
