@@ -19,6 +19,7 @@ public class AddCompany extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTable table;
+	private static DefaultTableModel tablemodel;
 
 	/**
 	 * Launch the application.
@@ -51,7 +52,7 @@ public class AddCompany extends JFrame {
 		table = new JTable();
 		table.setRowHeight(35);
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		DefaultTableModel tablemodel=new DefaultTableModel();
+		tablemodel=new DefaultTableModel();
 		table.setModel(tablemodel);
 		tablemodel.addColumn("Firma Adı");
 		tablemodel.addColumn("Hizmet Bedeli");
@@ -64,11 +65,26 @@ public class AddCompany extends JFrame {
 		contentPane.add(scrollPane);
 		
 		JButton btnNewButton = new JButton("Seçili Firmayı Güncelle");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int selectedRow=table.getSelectedRow();
+				String[] rowData=new String[4];
+				for (int i = 0; i < rowData.length; i++) {
+					rowData[i]=table.getValueAt(selectedRow, i).toString();
+				}
+				UpdateCompanyDialog.main(rowData,tablemodel,table.getSelectedRow());
+			}
+		});
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnNewButton.setBounds(10, 376, 191, 77);
 		contentPane.add(btnNewButton);
 		
 		JButton btnFirma = new JButton("Firma Ekle");
+		btnFirma.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AddCompanyDialog.main(null);
+			}
+		});
 		btnFirma.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnFirma.setBounds(303, 376, 191, 77);
 		contentPane.add(btnFirma);
@@ -84,5 +100,9 @@ public class AddCompany extends JFrame {
 		btnSeiliFirmaySil.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnSeiliFirmaySil.setBounds(585, 376, 191, 77);
 		contentPane.add(btnSeiliFirmaySil);
+	}
+	
+	public static void setTable(String[] data) {
+		tablemodel.addRow(data);
 	}
 }
