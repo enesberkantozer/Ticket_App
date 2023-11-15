@@ -9,10 +9,10 @@ import javax.swing.JTabbedPane;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Font;
+
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
-import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.Color;
@@ -196,7 +196,8 @@ public class LoginFrame extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				AddCompany.main(null);
-				dispose();
+				textField.setText(null);
+				passwordField.setText(null);
 			}
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 20));
