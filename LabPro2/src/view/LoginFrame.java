@@ -16,6 +16,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.Color;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class LoginFrame extends JFrame {
 
@@ -185,6 +187,12 @@ public class LoginFrame extends JFrame {
 		AdminPanel.add(lblNewLabel_1_1);
 		
 		JButton btnNewButton = new JButton("Giriş Yap");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AddCompany.main(null);
+				dispose();
+			}
+		});
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 20));
 		btnNewButton.setBounds(203, 214, 171, 50);
 		AdminPanel.add(btnNewButton);
