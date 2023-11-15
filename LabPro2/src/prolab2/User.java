@@ -1,6 +1,17 @@
 package prolab2;
 
+import view.LoginFrame;
+
 abstract class User implements ILoginable{
+	public void userLogin() {
+		LoginFrame.main(new String[]{"0"});
+	}
+	public void companyLogin() {
+		LoginFrame.main(new String[]{"1"});
+	}
+	public void adminLogin() {
+		LoginFrame.main(new String[]{"2"});
+	}
 
 	public static void main(String[] args) {
 		
@@ -23,6 +34,7 @@ abstract class User implements ILoginable{
 //		 Tum yolcu bilgileri girisi tamamlandıktan sonra ”Odeme Yap” butonuna tıklanarak odeme islemi yapılacaktır.
 //		 Odeme islemi basarıyla tamamlandıgında, secilen sefer ve rezervasyon islemi yapılan koltuklar ekranda goruntulenir.
 //		 Rezerve edilen koltuklar, rezervasyon islemi tamamlandıgında gorunur.
+		
 	}
 
 }
