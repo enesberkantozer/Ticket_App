@@ -13,8 +13,11 @@ import javax.swing.ListSelectionModel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.util.Iterator;
 
-public class AddCompany extends JFrame {
+public class AdminFrame extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -28,7 +31,7 @@ public class AddCompany extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					AddCompany frame = new AddCompany();
+					AdminFrame frame = new AdminFrame();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -40,8 +43,19 @@ public class AddCompany extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public AddCompany() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	public AdminFrame() {
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosed(WindowEvent e) {
+				String[] companyLoginData=new String[(tablemodel.getRowCount())*2];
+				for (int i = 0; i < companyLoginData.length; i+=2) {
+					companyLoginData[i]= table.getValueAt(i/2, 2).toString();
+					companyLoginData[i+1]= table.getValueAt(i/2, 3).toString();
+				}
+				LoginFrame.main(companyLoginData);
+			}
+		});
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 800, 500);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

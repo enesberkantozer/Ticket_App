@@ -35,7 +35,7 @@ public class LoginFrame extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					LoginFrame frame = new LoginFrame();
+					LoginFrame frame = new LoginFrame(args);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -47,7 +47,7 @@ public class LoginFrame extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public LoginFrame() {
+	public LoginFrame(String[] companyData) {
 		setTitle("Hoş Geldiniz");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 500);
@@ -160,6 +160,20 @@ public class LoginFrame extends JFrame {
 		CompanyPanel.add(lblNewLabel_1_1_1);
 		
 		JButton btnNewButton_1 = new JButton("Giriş Yap");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				boolean isLogin=false;
+				for (int i = 0; i < companyData.length; i+=2) {
+					if(textField_1.getText().equals(companyData[i]) && passwordField_1.getText().equals(companyData[i+1])) {
+						isLogin=true;
+						break;
+					}
+				}
+				if(isLogin) {
+					CompanyFrame.main(null);
+				}
+			}
+		});
 		btnNewButton_1.setBackground(getForeground());
 		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 20));
 		btnNewButton_1.setBounds(203, 214, 171, 50);
@@ -195,9 +209,8 @@ public class LoginFrame extends JFrame {
 		JButton btnNewButton = new JButton("Giriş Yap");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				AddCompany.main(null);
-				textField.setText(null);
-				passwordField.setText(null);
+				AdminFrame.main(null);
+				dispose();
 			}
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 20));

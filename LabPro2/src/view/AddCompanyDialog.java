@@ -109,7 +109,7 @@ public class AddCompanyDialog extends JDialog {
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						String[] data= {textField.getText(),textField_1.getText(),textField_2.getText(),textField_3.getText()};
-						AddCompany.setTable(data);
+						AdminFrame.setTable(data);
 						dispose();
 					}
 				});
