@@ -52,7 +52,7 @@ public class AdminFrame extends JFrame {
 					companyLoginData[i]= table.getValueAt(i/2, 2).toString();
 					companyLoginData[i+1]= table.getValueAt(i/2, 3).toString();
 				}
-				LoginFrame.main(companyLoginData);
+				LoginFrame.main(companyLoginData,0);
 			}
 		});
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

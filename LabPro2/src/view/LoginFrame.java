@@ -32,11 +32,11 @@ public class LoginFrame extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args, int selectedTab) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					LoginFrame frame = new LoginFrame(args);
+					LoginFrame frame = new LoginFrame(args,selectedTab);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -48,7 +48,7 @@ public class LoginFrame extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public LoginFrame(String[] companyData) {
+	public LoginFrame(String[] companyData,int selectedTab) {
 		setTitle("Hoş Geldiniz");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 500);
@@ -126,6 +126,11 @@ public class LoginFrame extends JFrame {
 		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_3.setBounds(134, 49, 32, 35);
 		UserPanel.add(lblNewLabel_3);
+		
+		JButton btnNewButton_2 = new JButton("Sefer Ara");
+		btnNewButton_2.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		btnNewButton_2.setBounds(285, 222, 201, 61);
+		UserPanel.add(btnNewButton_2);
 		
 		JPanel CompanyPanel = new JPanel();
 		CompanyPanel.setLayout(null);
@@ -217,5 +222,7 @@ public class LoginFrame extends JFrame {
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setBounds(10, 10, 766, 77);
 		contentPane.add(lblNewLabel);
+		
+		tabbedPane.setSelectedIndex(selectedTab);
 	}
 }
