@@ -48,37 +48,39 @@ public class AddCompany extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		table = new JTable();
 		table.setRowHeight(35);
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		tablemodel=new DefaultTableModel();
+		tablemodel = new DefaultTableModel();
 		table.setModel(tablemodel);
 		tablemodel.addColumn("Firma Adı");
 		tablemodel.addColumn("Hizmet Bedeli");
 		tablemodel.addColumn("Kullanıcı Adı");
 		tablemodel.addColumn("Şifre");
 		table.setDefaultEditor(Object.class, null);
-		
+
 		JScrollPane scrollPane = new JScrollPane(table);
 		scrollPane.setBounds(10, 10, 766, 347);
 		contentPane.add(scrollPane);
-		
+
 		JButton btnNewButton = new JButton("Seçili Firmayı Güncelle");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int selectedRow=table.getSelectedRow();
-				String[] rowData=new String[4];
-				for (int i = 0; i < rowData.length; i++) {
-					rowData[i]=table.getValueAt(selectedRow, i).toString();
+				if (table.getSelectedRow() != -1) {
+					int selectedRow = table.getSelectedRow();
+					String[] rowData = new String[4];
+					for (int i = 0; i < rowData.length; i++) {
+						rowData[i] = table.getValueAt(selectedRow, i).toString();
+					}
+					UpdateCompanyDialog.main(rowData, tablemodel, table.getSelectedRow());
 				}
-				UpdateCompanyDialog.main(rowData,tablemodel,table.getSelectedRow());
 			}
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnNewButton.setBounds(10, 376, 191, 77);
 		contentPane.add(btnNewButton);
-		
+
 		JButton btnFirma = new JButton("Firma Ekle");
 		btnFirma.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -88,11 +90,11 @@ public class AddCompany extends JFrame {
 		btnFirma.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnFirma.setBounds(303, 376, 191, 77);
 		contentPane.add(btnFirma);
-		
+
 		JButton btnSeiliFirmaySil = new JButton("Seçili Firmayı Sil");
 		btnSeiliFirmaySil.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(table.getSelectedRow()!=-1) {
+				if (table.getSelectedRow() != -1) {
 					tablemodel.removeRow(table.getSelectedRow());
 				}
 			}
@@ -101,7 +103,7 @@ public class AddCompany extends JFrame {
 		btnSeiliFirmaySil.setBounds(585, 376, 191, 77);
 		contentPane.add(btnSeiliFirmaySil);
 	}
-	
+
 	public static void setTable(String[] data) {
 		tablemodel.addRow(data);
 	}
