@@ -126,6 +126,12 @@ public class LoginFrame extends JFrame {
 		lblNewLabel_3.setBounds(134, 49, 32, 35);
 		UserPanel.add(lblNewLabel_3);
 		
+		JButton btnNewButton_1_1 = new JButton("Sefer Ara");
+		btnNewButton_1_1.setFont(new Font("Tahoma", Font.BOLD, 20));
+		btnNewButton_1_1.setBackground((Color) null);
+		btnNewButton_1_1.setBounds(284, 204, 171, 50);
+		UserPanel.add(btnNewButton_1_1);
+		
 		JPanel CompanyPanel = new JPanel();
 		CompanyPanel.setLayout(null);
 		tabbedPane.addTab("Firma", null, CompanyPanel, null);
