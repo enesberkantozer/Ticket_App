@@ -170,7 +170,7 @@ public class LoginFrame extends JFrame {
 					}
 				}
 				if(isLogin) {
-					CompanyFrame.main(null);
+					CompanyFrame.execute(null);
 				}
 			}
 		});

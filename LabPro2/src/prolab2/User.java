@@ -3,18 +3,11 @@ package prolab2;
 import view.LoginFrame;
 
 abstract class User implements ILoginable {
-	public void userLogin() {
-		LoginFrame.main(null, 0);
+	
+	public void Login(int x) {
+		LoginFrame.main(null, x);
 	}
-
-	public void companyLogin() {
-		LoginFrame.main(null, 1);
-	}
-
-	public void adminLogin() {
-		LoginFrame.main(null, 2);
-	}
-
+	
 	public static void main(String[] args) {
 
 //		 Kullanıcı paneline dogrudan giris yapılabilir. Kullanıcılar icin herhangi bir uyelik sistemine gerek yoktur.
