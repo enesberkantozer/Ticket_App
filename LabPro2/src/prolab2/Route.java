@@ -39,9 +39,9 @@ public class Route {
 		    
 	}
 	public ArrayList<String> getAllRoute(int x) {
-		 if (x >= 0 && x < allRoute.size()) {
+		 if (x >= 0 && x < allRoute.size()) 
 			 return allRoute.get(x);
-		 } 
+		  
 		 else 
 		        // x, ArrayList'in sınırlarının dışında ise işle
 		        return new ArrayList<String>(List.of("Geçersiz x koordinatı"));

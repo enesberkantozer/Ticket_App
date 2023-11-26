@@ -2,8 +2,8 @@ package prolab2;
 
 public class Passenger extends Person{
 	
-	public Passenger(Company companyName, String personName, String personSurname) {
-		super(companyName, personName, personSurname);
+	public Passenger(Company companyName,Vehicle vehicleName, String personName, String personSurname) {
+		super(companyName, vehicleName, personName, personSurname);
 	}
 	
 	public static void main(String[] args) {
