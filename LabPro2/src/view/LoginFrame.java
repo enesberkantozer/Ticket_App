@@ -6,6 +6,10 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import prolab2.Company;
+import prolab2.ControlLogin;
+
 import javax.swing.JTabbedPane;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
@@ -21,38 +25,18 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class LoginFrame extends JFrame {
-
+	
 	private static final long serialVersionUID = 1L;
-	private JPanel contentPane;
-	private JTextField textField;
-	private JPasswordField passwordField;
-	private JTextField textField_1;
-	private JPasswordField passwordField_1;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args, int selectedTab) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					LoginFrame frame = new LoginFrame(args,selectedTab);
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
 	 */
-	public LoginFrame(String[] companyData,int selectedTab) {
+	public void execute(int selectedTab) {
+		setVisible(true);
 		setTitle("Hoş Geldiniz");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 500);
-		contentPane = new JPanel();
+		JPanel contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
@@ -66,156 +50,159 @@ public class LoginFrame extends JFrame {
 		tabbedPane.addTab("Kullanıcı", null, UserPanel, null);
 		UserPanel.setLayout(null);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"", "İstanbul", "Kocaeli", "Bilecik", "Ankara", "Eskişehir", "Konya"}));
-		comboBox.setBounds(32, 49, 103, 35);
-		UserPanel.add(comboBox);
+		JComboBox beginRouteComboBox = new JComboBox();
+		beginRouteComboBox.setModel(new DefaultComboBoxModel(new String[] {"", "İstanbul", "Kocaeli", "Bilecik", "Ankara", "Eskişehir", "Konya"}));
+		beginRouteComboBox.setBounds(32, 49, 103, 35);
+		UserPanel.add(beginRouteComboBox);
 		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"", "İstanbul", "Kocaeli", "Bilecik", "Ankara", "Eskişehir", "Konya"}));
-		comboBox_1.setBounds(166, 49, 103, 35);
-		UserPanel.add(comboBox_1);
+		JComboBox endRouteComboBox = new JComboBox();
+		endRouteComboBox.setModel(new DefaultComboBoxModel(new String[] {"", "İstanbul", "Kocaeli", "Bilecik", "Ankara", "Eskişehir", "Konya"}));
+		endRouteComboBox.setBounds(166, 49, 103, 35);
+		UserPanel.add(endRouteComboBox);
 		
-		JComboBox comboBox_2 = new JComboBox();
-		comboBox_2.setModel(new DefaultComboBoxModel(new String[] {"", "4", "5", "6", "7", "8", "9", "10"}));
-		comboBox_2.setBounds(374, 49, 103, 35);
-		UserPanel.add(comboBox_2);
+		JComboBox dayComboBox = new JComboBox();
+		dayComboBox.setModel(new DefaultComboBoxModel(new String[] {"", "4", "5", "6", "7", "8", "9", "10"}));
+		dayComboBox.setBounds(374, 49, 103, 35);
+		UserPanel.add(dayComboBox);
 		
-		JComboBox comboBox_3 = new JComboBox();
-		comboBox_3.setModel(new DefaultComboBoxModel(new String[] {"Kasım"}));
-		comboBox_3.setBounds(500, 49, 103, 35);
-		UserPanel.add(comboBox_3);
+		JComboBox monthComboBox = new JComboBox();
+		monthComboBox.setModel(new DefaultComboBoxModel(new String[] {"Kasım"}));
+		monthComboBox.setBounds(500, 49, 103, 35);
+		UserPanel.add(monthComboBox);
 		
-		JComboBox comboBox_4 = new JComboBox();
-		comboBox_4.setModel(new DefaultComboBoxModel(new String[] {"2023"}));
-		comboBox_4.setBounds(622, 49, 103, 35);
-		UserPanel.add(comboBox_4);
+		JComboBox yearComboBox = new JComboBox();
+		yearComboBox.setModel(new DefaultComboBoxModel(new String[] {"2023"}));
+		yearComboBox.setBounds(622, 49, 103, 35);
+		UserPanel.add(yearComboBox);
 		
-		JLabel lblNewLabel_2 = new JLabel("Kalkış");
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_2.setBounds(32, 10, 103, 29);
-		UserPanel.add(lblNewLabel_2);
+		JLabel lblBeginRoute = new JLabel("Kalkış");
+		lblBeginRoute.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		lblBeginRoute.setHorizontalAlignment(SwingConstants.CENTER);
+		lblBeginRoute.setBounds(32, 10, 103, 29);
+		UserPanel.add(lblBeginRoute);
 		
-		JLabel lblNewLabel_2_1 = new JLabel("Varış");
-		lblNewLabel_2_1.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblNewLabel_2_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_2_1.setBounds(166, 10, 103, 29);
-		UserPanel.add(lblNewLabel_2_1);
+		JLabel lblEndRoute = new JLabel("Varış");
+		lblEndRoute.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		lblEndRoute.setHorizontalAlignment(SwingConstants.CENTER);
+		lblEndRoute.setBounds(166, 10, 103, 29);
+		UserPanel.add(lblEndRoute);
 		
-		JLabel lblNewLabel_2_2 = new JLabel("Gün");
-		lblNewLabel_2_2.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblNewLabel_2_2.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_2_2.setBounds(374, 10, 103, 29);
-		UserPanel.add(lblNewLabel_2_2);
+		JLabel lblDay = new JLabel("Gün");
+		lblDay.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		lblDay.setHorizontalAlignment(SwingConstants.CENTER);
+		lblDay.setBounds(374, 10, 103, 29);
+		UserPanel.add(lblDay);
 		
-		JLabel lblNewLabel_2_3 = new JLabel("Ay");
-		lblNewLabel_2_3.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblNewLabel_2_3.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_2_3.setBounds(500, 10, 103, 29);
-		UserPanel.add(lblNewLabel_2_3);
+		JLabel lblMonth = new JLabel("Ay");
+		lblMonth.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		lblMonth.setHorizontalAlignment(SwingConstants.CENTER);
+		lblMonth.setBounds(500, 10, 103, 29);
+		UserPanel.add(lblMonth);
 		
-		JLabel lblNewLabel_2_4 = new JLabel("Yıl");
-		lblNewLabel_2_4.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblNewLabel_2_4.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_2_4.setBounds(622, 10, 103, 29);
-		UserPanel.add(lblNewLabel_2_4);
+		JLabel lblYear = new JLabel("Yıl");
+		lblYear.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		lblYear.setHorizontalAlignment(SwingConstants.CENTER);
+		lblYear.setBounds(622, 10, 103, 29);
+		UserPanel.add(lblYear);
 		
-		JLabel lblNewLabel_3 = new JLabel("→");
-		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_3.setBounds(134, 49, 32, 35);
-		UserPanel.add(lblNewLabel_3);
+		JLabel lblArrow = new JLabel("→");
+		lblArrow.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblArrow.setHorizontalAlignment(SwingConstants.CENTER);
+		lblArrow.setBounds(134, 49, 32, 35);
+		UserPanel.add(lblArrow);
 		
-		JButton btnNewButton_2 = new JButton("Sefer Ara");
-		btnNewButton_2.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		btnNewButton_2.setBounds(285, 222, 201, 61);
-		UserPanel.add(btnNewButton_2);
+		JButton btnUserLogin = new JButton("Sefer Ara");
+		btnUserLogin.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		btnUserLogin.setBounds(285, 222, 201, 61);
+		UserPanel.add(btnUserLogin);
 		
 		JPanel CompanyPanel = new JPanel();
 		CompanyPanel.setLayout(null);
 		tabbedPane.addTab("Firma", null, CompanyPanel, null);
 		
-		textField_1 = new JTextField();
-		textField_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		textField_1.setColumns(10);
-		textField_1.setBounds(220, 53, 300, 50);
-		CompanyPanel.add(textField_1);
+		JTextField companyUsername = new JTextField();
+		companyUsername.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		companyUsername.setColumns(10);
+		companyUsername.setBounds(220, 53, 300, 50);
+		CompanyPanel.add(companyUsername);
 		
-		passwordField_1 = new JPasswordField();
-		passwordField_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		passwordField_1.setBounds(220, 146, 300, 50);
-		CompanyPanel.add(passwordField_1);
+		JPasswordField companyPassword = new JPasswordField();
+		companyPassword.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		companyPassword.setBounds(220, 146, 300, 50);
+		CompanyPanel.add(companyPassword);
 		
-		JLabel lblNewLabel_1_2 = new JLabel("Kullanıcı Adı:");
-		lblNewLabel_1_2.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblNewLabel_1_2.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblNewLabel_1_2.setBounds(10, 53, 186, 50);
-		CompanyPanel.add(lblNewLabel_1_2);
+		JLabel lblCompanyUsername = new JLabel("Kullanıcı Adı:");
+		lblCompanyUsername.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblCompanyUsername.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblCompanyUsername.setBounds(10, 53, 186, 50);
+		CompanyPanel.add(lblCompanyUsername);
 		
-		JLabel lblNewLabel_1_1_1 = new JLabel("Şifre:");
-		lblNewLabel_1_1_1.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblNewLabel_1_1_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblNewLabel_1_1_1.setBounds(10, 146, 186, 50);
-		CompanyPanel.add(lblNewLabel_1_1_1);
+		JLabel lblCompanyPassword = new JLabel("Şifre:");
+		lblCompanyPassword.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblCompanyPassword.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblCompanyPassword.setBounds(10, 146, 186, 50);
+		CompanyPanel.add(lblCompanyPassword);
 		
-		JButton btnNewButton_1 = new JButton("Giriş Yap");
-		btnNewButton_1.addActionListener(new ActionListener() {
+		JLabel lblCompanyErrorMessage = new JLabel("");
+		lblCompanyErrorMessage.setHorizontalAlignment(SwingConstants.CENTER);
+		lblCompanyErrorMessage.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblCompanyErrorMessage.setBounds(10, 7, 741, 36);
+		CompanyPanel.add(lblCompanyErrorMessage);
+		
+		JButton btnCompanyLogin = new JButton("Giriş Yap");
+		btnCompanyLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				boolean isLogin=false;
-				for (int i = 0; i < companyData.length; i+=2) {
-					if(textField_1.getText().equals(companyData[i]) && passwordField_1.getText().equals(companyData[i+1])) {
-						isLogin=true;
-						break;
-					}
-				}
-				if(isLogin) {
-					CompanyFrame.execute(null);
+				ControlLogin controlLogin=new ControlLogin();
+				Company openCompany=controlLogin.getCompany(companyUsername.getText(), companyPassword.getText());
+				if(openCompany!=null) {
+					CompanyFrame.execute(null, openCompany);
+				}else {
+					lblCompanyErrorMessage.setText("Kullanıcı adı veya şifre yanlış");
 				}
 			}
 		});
-		btnNewButton_1.setBackground(getForeground());
-		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 20));
-		btnNewButton_1.setBounds(203, 214, 171, 50);
-		CompanyPanel.add(btnNewButton_1);
+		btnCompanyLogin.setFont(new Font("Tahoma", Font.BOLD, 20));
+		btnCompanyLogin.setBounds(228, 230, 171, 50);
+		CompanyPanel.add(btnCompanyLogin);
 		
 		JPanel AdminPanel = new JPanel();
 		tabbedPane.addTab("Admin", null, AdminPanel, null);
 		AdminPanel.setLayout(null);
 		
-		textField = new JTextField();
-		textField.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		textField.setBounds(220, 53, 300, 50);
-		AdminPanel.add(textField);
-		textField.setColumns(10);
+		JTextField adminUsername = new JTextField();
+		adminUsername.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		adminUsername.setBounds(220, 53, 300, 50);
+		AdminPanel.add(adminUsername);
+		adminUsername.setColumns(10);
 		
-		passwordField = new JPasswordField();
-		passwordField.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		passwordField.setBounds(220, 146, 300, 50);
-		AdminPanel.add(passwordField);
+		JPasswordField adminPassword = new JPasswordField();
+		adminPassword.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		adminPassword.setBounds(220, 146, 300, 50);
+		AdminPanel.add(adminPassword);
 		
-		JLabel lblNewLabel_1 = new JLabel("Kullanıcı Adı:");
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblNewLabel_1.setBounds(10, 53, 186, 50);
-		AdminPanel.add(lblNewLabel_1);
+		JLabel lblAdminUsername = new JLabel("Kullanıcı Adı:");
+		lblAdminUsername.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblAdminUsername.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblAdminUsername.setBounds(10, 53, 186, 50);
+		AdminPanel.add(lblAdminUsername);
 		
-		JLabel lblNewLabel_1_1 = new JLabel("Şifre:");
-		lblNewLabel_1_1.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblNewLabel_1_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblNewLabel_1_1.setBounds(10, 146, 186, 50);
-		AdminPanel.add(lblNewLabel_1_1);
+		JLabel lblAdminPassword = new JLabel("Şifre:");
+		lblAdminPassword.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblAdminPassword.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblAdminPassword.setBounds(10, 146, 186, 50);
+		AdminPanel.add(lblAdminPassword);
 		
-		JButton btnNewButton = new JButton("Giriş Yap");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton btnAdminLogin = new JButton("Giriş Yap");
+		btnAdminLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				AdminFrame.main(null);
+				AdminFrame adminFrame= new AdminFrame();
+				adminFrame.execute();
 				dispose();
 			}
 		});
-		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 20));
-		btnNewButton.setBounds(203, 214, 171, 50);
-		AdminPanel.add(btnNewButton);
+		btnAdminLogin.setFont(new Font("Tahoma", Font.BOLD, 20));
+		btnAdminLogin.setBounds(203, 214, 171, 50);
+		AdminPanel.add(btnAdminLogin);
 		
 		JLabel lblNewLabel = new JLabel("Hoş Geldiniz");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 20));

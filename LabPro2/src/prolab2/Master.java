@@ -1,14 +1,17 @@
 package prolab2;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+
+import view.LoginFrame;
 
 public class Master {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		Company A = new Company("A");
+		/*Company A = new Company("A");
 		Company B = new Company("B");
 		Company C = new Company("C");
 		Company D = new Company("D");
@@ -41,7 +44,10 @@ public class Master {
 		Airplane pln3 = new Airplane(F, "pln3", 60, 6, 7500, 4000, 20);
 		Airplane pln4 = new Airplane(F, "pln4", 60, 6, 7500, 4000, 20);
 
-		Personel emre = new Personel(A, oto1, "emre", "algan", true);
-
+		Personel emre = new Personel(A, oto1, "emre", "algan", true);*/
+		
+		LoginFrame login=new LoginFrame();
+		login.execute(0);
+		
 	}
 }

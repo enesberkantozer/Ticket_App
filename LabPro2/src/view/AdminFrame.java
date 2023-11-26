@@ -9,67 +9,43 @@ import javax.swing.JTable;
 import javax.swing.JButton;
 import java.awt.Font;
 import javax.swing.table.DefaultTableModel;
+
+import prolab2.Company;
+import prolab2.Storage;
+
 import javax.swing.ListSelectionModel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
 import java.util.Iterator;
 
 public class AdminFrame extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	private JPanel contentPane;
-	private JTable table;
-	private static DefaultTableModel tablemodel;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					AdminFrame frame = new AdminFrame();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	private DefaultTableModel tablemodel;
 
 	/**
 	 * Create the frame.
 	 */
-	public AdminFrame() {
-		addWindowListener(new WindowAdapter() {
-			@Override
-			public void windowClosed(WindowEvent e) {
-				String[] companyLoginData=new String[(tablemodel.getRowCount())*2];
-				for (int i = 0; i < companyLoginData.length; i+=2) {
-					companyLoginData[i]= table.getValueAt(i/2, 2).toString();
-					companyLoginData[i+1]= table.getValueAt(i/2, 3).toString();
-				}
-				LoginFrame.main(companyLoginData,0);
-			}
-		});
+	public void execute() {
+		setVisible(true);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 800, 500);
-		contentPane = new JPanel();
+		JPanel contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		table = new JTable();
+		JTable table = new JTable();
 		table.setRowHeight(35);
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		tablemodel = new DefaultTableModel();
 		table.setModel(tablemodel);
 		tablemodel.addColumn("Firma Adı");
-		tablemodel.addColumn("Hizmet Bedeli");
 		tablemodel.addColumn("Kullanıcı Adı");
 		tablemodel.addColumn("Şifre");
 		table.setDefaultEditor(Object.class, null);
@@ -81,14 +57,8 @@ public class AdminFrame extends JFrame {
 		JButton btnNewButton = new JButton("Seçili Firmayı Güncelle");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (table.getSelectedRow() != -1) {
-					int selectedRow = table.getSelectedRow();
-					String[] rowData = new String[4];
-					for (int i = 0; i < rowData.length; i++) {
-						rowData[i] = table.getValueAt(selectedRow, i).toString();
-					}
-					UpdateCompanyDialog.main(rowData, tablemodel, table.getSelectedRow());
-				}
+				UpdateCompanyDialog update = new UpdateCompanyDialog(tablemodel, table.getSelectedRow());
+				update.execute();
 			}
 		});
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -98,7 +68,8 @@ public class AdminFrame extends JFrame {
 		JButton btnFirma = new JButton("Firma Ekle");
 		btnFirma.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				AddCompanyDialog.main(null);
+				AddCompanyDialog addCompany = new AddCompanyDialog();
+				addCompany.addRow(tablemodel);
 			}
 		});
 		btnFirma.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -110,15 +81,37 @@ public class AdminFrame extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (table.getSelectedRow() != -1) {
 					tablemodel.removeRow(table.getSelectedRow());
+					Storage.getCompanysData().remove(table.getSelectedRow());
+					Company.companyCount--;
 				}
 			}
 		});
 		btnSeiliFirmaySil.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnSeiliFirmaySil.setBounds(585, 376, 191, 77);
 		contentPane.add(btnSeiliFirmaySil);
+
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosed(WindowEvent e) {
+				LoginFrame login = new LoginFrame();
+				login.execute(0);
+			}
+
+			@Override
+			public void windowOpened(WindowEvent e) {
+				if (Company.companyCount > 0) {
+					ArrayList<Company> companys = Storage.getCompanysData();
+					for (int i = 0; i < Company.companyCount; i++) {
+						String[] data = { companys.get(i).getCompanyName(), companys.get(i).getUsername(),
+								companys.get(i).getPassword() };
+						tablemodel.addRow(data);
+					}
+				}
+			}
+		});
 	}
 
-	public static void setTable(String[] data) {
+	public void setTable(String[] data) {
 		tablemodel.addRow(data);
 	}
 }

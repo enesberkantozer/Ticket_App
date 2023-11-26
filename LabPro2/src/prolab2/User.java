@@ -5,7 +5,7 @@ import view.LoginFrame;
 abstract class User implements ILoginable {
 	
 	public void Login(int x) {
-		LoginFrame.main(null, x);
+		//LoginFrame.main(null, x);
 	}
 	
 	public static void main(String[] args) {
