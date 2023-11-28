@@ -9,7 +9,7 @@ public class Train extends Vehicle{
 
 	public Train(String companyName, String vehicleId, int vehicleCapacity, int vehicleTravelNo, int costDriver, int costService, int priceFuel) {
 		super(companyName, vehicleId, vehicleCapacity, vehicleTravelNo, costDriver, costService, priceFuel);
-		trains.add(trainCount, this);
+		trains.add(this);
 		trainCount++;
 	}
 

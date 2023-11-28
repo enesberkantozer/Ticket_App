@@ -11,7 +11,6 @@ import java.awt.Font;
 import javax.swing.table.DefaultTableModel;
 
 import prolab2.Company;
-import prolab2.Storage;
 
 import javax.swing.ListSelectionModel;
 import java.awt.event.ActionListener;
@@ -81,7 +80,7 @@ public class AdminFrame extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (table.getSelectedRow() != -1) {
 					tablemodel.removeRow(table.getSelectedRow());
-					Storage.getCompanysData().remove(table.getSelectedRow());
+					Company.companysList.remove(table.getSelectedRow());
 					Company.companyCount--;
 				}
 			}
@@ -100,7 +99,7 @@ public class AdminFrame extends JFrame {
 			@Override
 			public void windowOpened(WindowEvent e) {
 				if (Company.companyCount > 0) {
-					ArrayList<Company> companys = Storage.getCompanysData();
+					ArrayList<Company> companys = Company.companysList;
 					for (int i = 0; i < Company.companyCount; i++) {
 						String[] data = { companys.get(i).getCompanyName(), companys.get(i).getUsername(),
 								companys.get(i).getPassword() };

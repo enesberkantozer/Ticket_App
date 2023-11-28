@@ -9,7 +9,7 @@ public class Airplane extends Vehicle{
 
 	public Airplane(String companyName, String vehicleId, int vehicleCapacity, int vehicleTravelNo, int costDriver, int costService, int priceFuel) {
 		super(companyName, vehicleId, vehicleCapacity, vehicleTravelNo, costDriver, costService, priceFuel);
-		airplanes.add(airplaneCount, this);
+		airplanes.add(this);
 		airplaneCount++;
 	}
 	

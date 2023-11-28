@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
-import prolab2.Storage;
+import prolab2.Company;
 
 import javax.swing.JTextField;
 import javax.swing.JLabel;
@@ -31,9 +31,9 @@ public class UpdateCompanyDialog extends JDialog {
 	 */
 	public UpdateCompanyDialog(DefaultTableModel tablemodel, int selectedRow) {
 		String[] rowData= {
-				Storage.getCompanysData().get(selectedRow).getCompanyName(),
-				Storage.getCompanysData().get(selectedRow).getUsername(),
-				Storage.getCompanysData().get(selectedRow).getPassword()
+				Company.companysList.get(selectedRow).getCompanyName(),
+				Company.companysList.get(selectedRow).getUsername(),
+				Company.companysList.get(selectedRow).getPassword()
 		};
  		
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
@@ -94,9 +94,9 @@ public class UpdateCompanyDialog extends JDialog {
 		JButton okButton = new JButton("OK");
 		okButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Storage.getCompanysData().get(selectedRow).setCompanyName(textField.getText());
-				Storage.getCompanysData().get(selectedRow).setUsername(textField_2.getText());
-				Storage.getCompanysData().get(selectedRow).setPassword(textField_3.getText());
+				Company.companysList.get(selectedRow).setCompanyName(textField.getText());
+				Company.companysList.get(selectedRow).setUsername(textField_2.getText());
+				Company.companysList.get(selectedRow).setPassword(textField_3.getText());
 				String[] data = { textField.getText(), textField_2.getText(), textField_3.getText() };
 				for (int i = 0; i < data.length; i++) {
 					tablemodel.setValueAt(data[i], selectedRow, i);

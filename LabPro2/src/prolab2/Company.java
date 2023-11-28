@@ -9,7 +9,7 @@ public class Company extends User implements IProfitable{
 	private String password;
 	
 	public static int companyCount=0;
-	public static ArrayList<Company> companys = new ArrayList<Company>();
+	public static ArrayList<Company> companysList = new ArrayList<Company>();
 	
 	private ArrayList<String> sefer = new ArrayList<>();
 	private ArrayList<String> arac = new ArrayList<>();
@@ -19,7 +19,7 @@ public class Company extends User implements IProfitable{
 		this.companyName=companyName;
 		this.username=username;
 		this.password=password;
-		companys.add(companyCount, this);
+		companysList.add(this);
 		companyCount++;
 	}
 	

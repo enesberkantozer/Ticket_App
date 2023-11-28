@@ -10,7 +10,6 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 import prolab2.Company;
-import prolab2.Storage;
 
 import javax.swing.JTextField;
 import javax.swing.JLabel;
@@ -84,7 +83,7 @@ public class AddCompanyDialog extends JDialog {
 		okButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Company company = new Company(companyName.getText(), username.getText(), password.getText());
-				Storage.addCompanyData(company);
+				//Company.addCompanyData(company);
 				String[] data = { companyName.getText(), username.getText(), password.getText() };
 				tableModel.addRow(data);
 				dispose();
