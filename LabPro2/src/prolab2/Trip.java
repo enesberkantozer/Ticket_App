@@ -2,6 +2,8 @@ package prolab2;
 
 import java.sql.Time;
 //Her seferin bir aracı, guzergahı, zamanı, fiyatı gibi bilgiler bulunmalıdır
+import java.util.ArrayList;
+import java.util.List;
 
 public class Trip {
 		
@@ -30,6 +32,11 @@ public class Trip {
 
 		public static void main(String[] args) {
 	    	
+			 new Route(new ArrayList<String>(List.of("Demiryolu", "Istanbul", "Kocaeli", "Bilecik", "Eskisehir", "Ankara")));
+		     new Route(new ArrayList<String>(List.of("Demiryolu", "Istanbul", "Kocaeli", "Bilecik", "Eskisehir", "Konya")));
+		     new Route(new ArrayList<String>(List.of("Karayolu", "Istanbul", "Kocaeli", "Ankara")));
+		     new Route(new ArrayList<String>(List.of("Karayolu", "Istanbul", "Kocaeli", "Eskisehir", "Konya")));
+		     new Route(new ArrayList<String>(List.of("Havayolu", "Istanbul", "Konya")));
+		     new Route(new ArrayList<String>(List.of("Havayolu", "Istanbul", "Ankara")));
 	}
-
 }
