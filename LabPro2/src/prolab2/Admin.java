@@ -11,5 +11,6 @@ public class Admin extends User{
 // 		Hizmet bedeli belirlenebilmelidir (Hizmet bedelinin sabit gunluk bir ucreti belirlenmelidir - 1000tl )
 		Admin adm1 = new Admin();
 		adm1.Login(2);
+		
 	}
 }

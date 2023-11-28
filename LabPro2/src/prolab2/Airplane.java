@@ -2,7 +2,7 @@ package prolab2;
 
 public class Airplane extends Vehicle{
 	
-	public Airplane(Company companyName, String vehicleId, int vehicleCapacity, int vehicleTravelNo, int costDriver, int costService, int priceFuel) {
+	public Airplane(String companyName, String vehicleId, int vehicleCapacity, int vehicleTravelNo, int costDriver, int costService, int priceFuel) {
 		super(companyName, vehicleId, vehicleCapacity, vehicleTravelNo, costDriver, costService, priceFuel);
 	}
 	

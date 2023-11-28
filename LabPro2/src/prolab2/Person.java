@@ -2,22 +2,22 @@ package prolab2;
 
 abstract public class Person {
 
-	private Company companyName;
+	private String companyName;
 	private Vehicle vehicleName;
 	private String personName;
 	private String personSurname;
 	
-	public Person(Company companyName, Vehicle vehicleName, String personName, String personSurname) {
+	public Person(String companyName, Vehicle vehicleName, String personName, String personSurname) {
 		this.companyName = companyName;
 		this.vehicleName = vehicleName;
 		this.personName = personName;
 		this.personSurname = personSurname;
 	}
 	
-	public Company getCompanyName() {
+	public String getCompanyName() {
 		return companyName;
 	}
-	public void setCompanyName(Company companyName) {
+	public void setCompanyName(String companyName) {
 		this.companyName = companyName;
 	}
 	

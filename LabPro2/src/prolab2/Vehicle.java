@@ -2,7 +2,7 @@ package prolab2;
 
 abstract public class Vehicle {
 	
-	private Company companyName;
+	private String companyName;
 	private String vehicleId;
 	private int vehicleCapacity;
 	private int vehicleTravelNo;
@@ -11,7 +11,7 @@ abstract public class Vehicle {
 	private int priceFuel;
 	
 
-	public Vehicle(Company companyName, String vehicleId, int vehicleCapacity, int vehicleTravelNo, int costDriver, int costService, int priceFuel) {
+	public Vehicle(String companyName, String vehicleId, int vehicleCapacity, int vehicleTravelNo, int costDriver, int costService, int priceFuel) {
 		this.companyName = companyName;
 		this.vehicleId = vehicleId;
 		this.vehicleCapacity = vehicleCapacity;
@@ -21,10 +21,10 @@ abstract public class Vehicle {
 		this.priceFuel = priceFuel;
 	}
 	
-	public Company getCompanyName() {
+	public String getCompanyName() {
 		return companyName;
 	}
-	public void setCompanyName(Company companyName) {
+	public void setCompanyName(String companyName) {
 		this.companyName = companyName;
 	}
 
@@ -69,13 +69,10 @@ abstract public class Vehicle {
 	public void setPriceFuel(int priceFuel) {
 		this.priceFuel = priceFuel;
 	}
-
-
-
-
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 }

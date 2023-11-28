@@ -5,7 +5,7 @@ import java.util.List;
 public class Route {
 	
 	private ArrayList<String> travel = new ArrayList<String>();
-	public static ArrayList<ArrayList<String>> allRoute = new ArrayList<ArrayList<String>>(); 
+	public ArrayList<ArrayList<String>> allRoute = new ArrayList<ArrayList<String>>(); 
 	
 	public Route(ArrayList<String> travel) {
 		this.travel = travel;

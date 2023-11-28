@@ -4,7 +4,7 @@ public class Personel extends Person{
 		
 	private boolean isDriver;
 	
-	public Personel(Company companyName, Vehicle vehicleName, String personName, String personSurname, boolean isDriver) {
+	public Personel(String companyName, Vehicle vehicleName, String personName, String personSurname, boolean isDriver) {
 		super(companyName, vehicleName, personName, personSurname);
 		this.isDriver = isDriver;
 	}
