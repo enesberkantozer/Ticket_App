@@ -10,11 +10,11 @@ public class Master {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-//		Company A = new Company("A");
-//		Company B = new Company("B");
-//		Company C = new Company("C");
-//		Company D = new Company("D");
-//		Company F = new Company("F");
+		Company A = new Company("A", "userA", "A1234");
+		Company B = new Company("B", "userB", "B1234");
+		Company C = new Company("C", "userC", "C1234");
+		Company D = new Company("D", "userD", "D1234");
+		Company F = new Company("F", "userF", "F1234");
 		
 				
         Route travel1 = new Route(new ArrayList<String>(List.of("Demiryolu", "Istanbul", "Kocaeli", "Bilecik", "Eskisehir", "Ankara")));

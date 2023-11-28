@@ -9,6 +9,17 @@ public class Company extends User implements IProfitable{
 	private String password;
 	public static int companyCount=0;
 	
+	private ArrayList<String> sefer = new ArrayList<>();
+	private ArrayList<String> arac = new ArrayList<>();
+	
+	public Company(String companyName, String username, String password) {
+		super();
+		this.companyName=companyName;
+		this.username=username;
+		this.password=password;
+		companyCount++;
+	}
+	
 	public String getCompanyName() {
 		return companyName;
 	}
@@ -31,25 +42,6 @@ public class Company extends User implements IProfitable{
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	
-	
-	
-	
-	
-	
-	
-	
-	private ArrayList<String> sefer = new ArrayList<>();
-	private ArrayList<String> arac = new ArrayList<>();
-	
-	public Company(String companyName, String username, String password) {
-		super();
-		this.companyName=companyName;
-		this.username=username;
-		this.password=password;
-		companyCount++;
 	}
 	
 	public String getSefer(int x) {
