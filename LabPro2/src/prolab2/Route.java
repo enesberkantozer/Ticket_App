@@ -10,12 +10,12 @@ public class Route {
     public static Map<String, Integer> distanceAir = new HashMap<>();
 
 	private ArrayList<String> travel = new ArrayList<String>();
-	public ArrayList<Route> allRoute = new ArrayList<Route>();
+    public static Map<Integer, ArrayList<String>> travelNo = new HashMap<>();
 	public static int routeCount = 0;
 		
-	public Route(ArrayList<String> travel) {
+	public Route(int index, ArrayList<String> travel) {
 		this.travel = travel;
-		allRoute.add(routeCount, this);
+		travelNo.put(index, travel);
 		routeCount++;
 	}
 
@@ -25,14 +25,6 @@ public class Route {
 	public void setTravel(String deger) {
 		travel.add(deger);
 	}
-
-	public Route getAllRoute(int x) { 
-		if(x < routeCount)
-			 return allRoute.get(x); 
-		else 
-			return null;
-	}
-	
 
 	public static void main(String[] args) {
 //		 Seferin kalkıs, varıs noktalarını ve sefere ait mesafe bilgilerini içermeli

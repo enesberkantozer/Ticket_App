@@ -11,17 +11,15 @@ public class Trip {
     public static Map<String, Integer> ticketBus = new HashMap<>();
     public static Map<String, Integer> ticketTrain = new HashMap<>();
     public static Map<String, Integer> ticketAirplane = new HashMap<>();
-
-
 	
 		public static void main(String[] args) {
 				    	
-			new Route(new ArrayList<String>(List.of("Demiryolu", "Istanbul", "Kocaeli", "Bilecik", "Eskisehir", "Ankara")));
-		    new Route(new ArrayList<String>(List.of("Demiryolu", "Istanbul", "Kocaeli", "Bilecik", "Eskisehir", "Konya")));
-		    new Route(new ArrayList<String>(List.of("Karayolu", "Istanbul", "Kocaeli", "Ankara")));
-		    new Route(new ArrayList<String>(List.of("Karayolu", "Istanbul", "Kocaeli", "Eskisehir", "Konya")));
-		    new Route(new ArrayList<String>(List.of("Havayolu", "Istanbul", "Konya")));
-		    new Route(new ArrayList<String>(List.of("Havayolu", "Istanbul", "Ankara")));
+			new Route(1, new ArrayList<String>(List.of("Demiryolu", "Istanbul", "Kocaeli", "Bilecik", "Eskisehir", "Ankara")));
+		    new Route(2, new ArrayList<String>(List.of("Demiryolu", "Istanbul", "Kocaeli", "Bilecik", "Eskisehir", "Konya")));
+		    new Route(3, new ArrayList<String>(List.of("Karayolu", "Istanbul", "Kocaeli", "Ankara")));
+		    new Route(4, new ArrayList<String>(List.of("Karayolu", "Istanbul", "Kocaeli", "Eskisehir", "Konya")));
+		    new Route(5, new ArrayList<String>(List.of("Havayolu", "Istanbul", "Konya")));
+		    new Route(6, new ArrayList<String>(List.of("Havayolu", "Istanbul", "Ankara")));
 		    
 		    ticketBus.put("İstanbul-Kocaeli", 50);
 		    ticketBus.put("İstanbul-Eskişehir", 150);
@@ -49,11 +47,6 @@ public class Trip {
 		    
 		    ticketAirplane.put("İstanbul-Ankara", 1000);
 		    ticketAirplane.put("İstanbul-Konya", 1200);
-
-
-
-		    
-
 
 	}
 }
