@@ -9,6 +9,7 @@ import javax.swing.border.EmptyBorder;
 
 import prolab2.Company;
 import prolab2.ControlLogin;
+import prolab2.Route;
 
 import javax.swing.JTabbedPane;
 import javax.swing.JLabel;
@@ -22,6 +23,7 @@ import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.Color;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class LoginFrame extends JFrame {
@@ -115,6 +117,24 @@ public class LoginFrame extends JFrame {
 		btnUserLogin.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		btnUserLogin.setBounds(285, 222, 201, 61);
 		UserPanel.add(btnUserLogin);
+		btnUserLogin.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				for (int i = 1; i <= Route.travelNo.size(); i++) {
+				    ArrayList<String> currentTravel = Route.travelNo.get(i);
+				    for(int j = 0; currentTravel.get(j) != null; j++)
+				    {
+				    	if (currentTravel.get(j).toString().equals ( beginRouteComboBox.getSelectedItem())
+				            && currentTravel.get(j).toString().equals ( endRouteComboBox.getSelectedItem())) {
+				    		System.out.println(currentTravel.get(i));
+				    }
+				    }
+				}
+
+			}
+		});
 		
 		JPanel CompanyPanel = new JPanel();
 		CompanyPanel.setLayout(null);
