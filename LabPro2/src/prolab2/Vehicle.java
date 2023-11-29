@@ -6,16 +6,19 @@ abstract public class Vehicle {
 	private String vehicleId;
 	private int vehicleCapacity;
 	private int vehicleTravelNo;
+	private String typeFuel;
 	private int costDriver;
 	private int costService;
 	private int priceFuel;
 	
 
-	public Vehicle(String companyName, String vehicleId, int vehicleCapacity, int vehicleTravelNo, int costDriver, int costService, int priceFuel) {
+	public Vehicle(String companyName, String vehicleId, int vehicleCapacity, int vehicleTravelNo, String typuFuel,
+			int costDriver, int costService, int priceFuel) {
 		this.companyName = companyName;
 		this.vehicleId = vehicleId;
 		this.vehicleCapacity = vehicleCapacity;
 		this.vehicleTravelNo = vehicleTravelNo;
+		this.typeFuel = typuFuel;
 		this.costDriver = costDriver;
 		this.costService = costService;
 		this.priceFuel = priceFuel;
@@ -49,6 +52,14 @@ abstract public class Vehicle {
 		this.vehicleTravelNo = vehicleTravelNo;
 	}
 	
+	public String getTypeFuel() {
+		return typeFuel;
+	}
+
+	public void setTypeFuel(String typeFuel) {
+		this.typeFuel = typeFuel;
+	}
+
 	public int getCostDriver() {
 		return costDriver;
 	}

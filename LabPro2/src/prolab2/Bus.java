@@ -8,8 +8,9 @@ public class Bus extends Vehicle{
 	public static int busCount=0;
 	public static ArrayList<Bus> buses = new ArrayList<Bus>();
 
-	public Bus(String companyName, String vehicleId, int vehicleCapacity, int vehicleTravelNo, int costDriver, int costService, int priceFuel) {
-		super(companyName, vehicleId, vehicleCapacity, vehicleTravelNo, costDriver, costService, priceFuel);
+	public Bus(String companyName, String vehicleId, int vehicleCapacity, int vehicleTravelNo, String typefuel,
+			int costDriver, int costService, int priceFuel) {
+		super(companyName, vehicleId, vehicleCapacity, vehicleTravelNo, typefuel, costDriver, costService, priceFuel);
 		buses.add(this);
 		busCount++;
 	}
