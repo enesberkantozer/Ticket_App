@@ -55,10 +55,6 @@ public class Route {
 		
 		distanceAir.put("İstanbul-Ankara", 250);
 		distanceAir.put("İstanbul-Konya", 250);
-
 		
-
-
 	}
-
 }
