@@ -164,13 +164,17 @@ public class UpdateVecihlePanel extends JDialog {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				if (rdBtnBus.isSelected()) {
+					comboRoute.removeAllItems();
 					comboRoute.setModel(new DefaultComboBoxModel(new String[] { "", "Boşta", "3. Sefer", "4. Sefer" }));
+					comboTypeOfFuel.removeAllItems();
 					comboTypeOfFuel.setModel(new DefaultComboBoxModel(new String[] { "", "Benzin", "Motorin" }));
 				} else if (rdbtnTrain.isSelected()) {
+					comboRoute.removeAllItems();
 					comboRoute.setModel(new DefaultComboBoxModel(new String[] { "", "Boşta", "1. Sefer", "2. Sefer" }));
 					comboTypeOfFuel.removeAllItems();
 					comboTypeOfFuel.addItem("Elektrik");
 				} else if (rdbtnAirplane.isSelected()) {
+					comboRoute.removeAllItems();
 					comboRoute.setModel(new DefaultComboBoxModel(new String[] { "", "Boşta", "5. Sefer", "6. Sefer" }));
 					comboTypeOfFuel.removeAllItems();
 					comboTypeOfFuel.addItem("Gaz");
@@ -216,20 +220,29 @@ public class UpdateVecihlePanel extends JDialog {
 		cancelButton.setActionCommand("Cancel");
 		buttonPane.add(cancelButton);;
 
-		try {
-			Thread.sleep(1000);
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowOpened(WindowEvent e) {
 				if(args[0].equals("Bus"))
+				{
 					rdBtnBus.setSelected(true);
-				else if(args[0].equals("Train"))
+					comboRoute.removeAllItems();
+					comboRoute.setModel(new DefaultComboBoxModel(new String[] { "", "Boşta", "3. Sefer", "4. Sefer" }));
+					comboTypeOfFuel.removeAllItems();
+					comboTypeOfFuel.setModel(new DefaultComboBoxModel(new String[] { "", "Benzin", "Motorin" }));
+				}else if(args[0].equals("Train")) {
 					rdbtnTrain.setSelected(true);
-				else if(args[0].equals("Airplane"))
+					comboRoute.removeAllItems();
+					comboRoute.setModel(new DefaultComboBoxModel(new String[] { "", "Boşta", "1. Sefer", "2. Sefer" }));
+					comboTypeOfFuel.removeAllItems();
+					comboTypeOfFuel.addItem("Elektrik");
+				}else if(args[0].equals("Airplane")) {
 					rdbtnAirplane.setSelected(true);
+					comboRoute.removeAllItems();
+					comboRoute.setModel(new DefaultComboBoxModel(new String[] { "", "Boşta", "5. Sefer", "6. Sefer" }));
+					comboTypeOfFuel.removeAllItems();
+					comboTypeOfFuel.addItem("Gaz");
+				}
 				txtVehicleID.setText(args[1]);
 				comboRoute.setSelectedItem(args[2]+". Sefer");
 				comboCapacity.setSelectedItem(args[3]);

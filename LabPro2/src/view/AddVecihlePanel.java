@@ -162,13 +162,17 @@ public class AddVecihlePanel extends JDialog {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				if (rdbtnNewRadioButton.isSelected()) {
+					comboBox.removeAllItems();
 					comboBox.setModel(new DefaultComboBoxModel(new String[] { "", "Boşta", "3. Sefer", "4. Sefer" }));
+					comboBox_2.removeAllItems();
 					comboBox_2.setModel(new DefaultComboBoxModel(new String[] { "", "Benzin", "Motorin" }));
 				} else if (rdbtnTren.isSelected()) {
+					comboBox.removeAllItems();
 					comboBox.setModel(new DefaultComboBoxModel(new String[] { "", "Boşta", "1. Sefer", "2. Sefer" }));
 					comboBox_2.removeAllItems();
 					comboBox_2.addItem("Elektrik");
 				} else if (rdbtnUak.isSelected()) {
+					comboBox.removeAllItems();
 					comboBox.setModel(new DefaultComboBoxModel(new String[] { "", "Boşta", "5. Sefer", "6. Sefer" }));
 					comboBox_2.removeAllItems();
 					comboBox_2.addItem("Gaz");
