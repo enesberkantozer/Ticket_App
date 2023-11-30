@@ -1,8 +1,5 @@
 package view;
 
-
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -20,7 +17,6 @@ import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
-import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -41,6 +37,12 @@ public class LoginFrame extends JFrame {
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("Hoş Geldiniz");
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBounds(10, 10, 766, 77);
+		contentPane.add(lblNewLabel);
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.setBounds(10, 98, 766, 355);
@@ -156,6 +158,7 @@ public class LoginFrame extends JFrame {
 				Company openCompany=controlLogin.getCompany(companyUsername.getText(), companyPassword.getText());
 				if(openCompany!=null) {
 					CompanyFrame.execute(null, openCompany);
+					dispose();
 				}else {
 					lblCompanyErrorMessage.setText("Kullanıcı adı veya şifre yanlış");
 				}
@@ -203,12 +206,6 @@ public class LoginFrame extends JFrame {
 		btnAdminLogin.setFont(new Font("Tahoma", Font.BOLD, 20));
 		btnAdminLogin.setBounds(203, 214, 171, 50);
 		AdminPanel.add(btnAdminLogin);
-		
-		JLabel lblNewLabel = new JLabel("Hoş Geldiniz");
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(10, 10, 766, 77);
-		contentPane.add(lblNewLabel);
 		
 		tabbedPane.setSelectedIndex(selectedTab);
 	}

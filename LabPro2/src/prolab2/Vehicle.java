@@ -1,5 +1,7 @@
 package prolab2;
 
+import java.util.ArrayList;
+
 abstract public class Vehicle {
 	
 	private String companyName;
@@ -11,6 +13,9 @@ abstract public class Vehicle {
 	private int costService;
 	private int priceFuel;
 	
+	
+	public static int vehicleCount=0;
+	public static ArrayList<Vehicle> vehiclesList=new ArrayList<Vehicle>();
 
 	public Vehicle(String companyName, String vehicleId, int vehicleCapacity, int vehicleTravelNo, String typuFuel,
 			int costDriver, int costService, int priceFuel) {
@@ -22,6 +27,7 @@ abstract public class Vehicle {
 		this.costDriver = costDriver;
 		this.costService = costService;
 		this.priceFuel = priceFuel;
+		vehicleCount++;
 	}
 	
 	public String getCompanyName() {

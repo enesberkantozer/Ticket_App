@@ -16,7 +16,6 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class AddCompanyDialog extends JDialog {
@@ -82,8 +81,7 @@ public class AddCompanyDialog extends JDialog {
 		JButton okButton = new JButton("ONAYLA");
 		okButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Company company = new Company(companyName.getText(), username.getText(), password.getText());
-				//Company.addCompanyData(company);
+				new Company(companyName.getText(), username.getText(), password.getText());
 				String[] data = { companyName.getText(), username.getText(), password.getText() };
 				tableModel.addRow(data);
 				dispose();

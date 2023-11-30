@@ -1,7 +1,5 @@
 package prolab2;
 
-import view.LoginFrame;
-
 abstract class User implements ILoginable {
 	
 	public void Login(int x) {

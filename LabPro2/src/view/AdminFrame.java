@@ -1,7 +1,5 @@
 package view;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -19,7 +17,6 @@ import javax.swing.JScrollPane;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class AdminFrame extends JFrame {
 
@@ -78,7 +75,7 @@ public class AdminFrame extends JFrame {
 		JButton btnSeiliFirmaySil = new JButton("Seçili Firmayı Sil");
 		btnSeiliFirmaySil.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (table.getSelectedRow() != -1) {
+				if (table.getSelectedRow() >= 0) {
 					tablemodel.removeRow(table.getSelectedRow());
 					Company.companysList.remove(table.getSelectedRow());
 					Company.companyCount--;
