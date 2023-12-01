@@ -1,5 +1,6 @@
 package prolab2;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class Company extends User implements IProfitable{
@@ -26,7 +27,6 @@ public class Company extends User implements IProfitable{
 	public String getCompanyName() {
 		return companyName;
 	}
-
 	public void setCompanyName(String companyName) {
 		this.companyName = companyName;
 	}
@@ -34,7 +34,6 @@ public class Company extends User implements IProfitable{
 	public String getUsername() {
 		return username;
 	}
-
 	public void setUsername(String username) {
 		this.username = username;
 	}
@@ -42,7 +41,6 @@ public class Company extends User implements IProfitable{
 	public String getPassword() {
 		return password;
 	}
-
 	public void setPassword(String password) {
 		this.password = password;
 	}
@@ -69,7 +67,23 @@ public class Company extends User implements IProfitable{
 // 		Arac ekleme ve cıkarma yapılabilir.
 // 		Sefer ekleme ve cıkarma yapılabilir.
 // 		Gunluk kar hesabı yapılabilir. Gunluk kar hesabı yolcu ucretleri, hizmet bedeli, personel maliyeti ve yakıt maliyeti dikkate alınarak hesaplanmalıdır.
-
+		new Bus("A", "oto1", 20, LocalDateTime.of(2023, 12, 4, 00, 00), 3, "Benzin", 5000, 2000, 10);
+		new Bus("A", "oto2", 15, LocalDateTime.of(2023, 12, 4, 01, 00), 3, "Benzin", 5000, 2000, 10);
+		
+		new Bus("B", "oto3", 15, LocalDateTime.of(2023, 12, 4, 02, 00), 3, "Motorin", 3000, 1500, 5);
+		new Bus("B", "oto4", 20, LocalDateTime.of(2023, 12, 4, 03, 00), 4, "Motorin", 3000, 1500, 5);
+		
+		new Bus("C", "oto5", 20, LocalDateTime.of(2023, 12, 4, 00, 30), 4, "Motorin", 4000, 2000, 6);
+		new Airplane("C", "pln1", 30, LocalDateTime.of(2023, 12, 4, 01, 30), 5, "Gaz", 10000, 6000, 25);
+		new Airplane("C", "pln2", 30, LocalDateTime.of(2023, 12, 4, 02, 30), 5, "Gaz", 10000, 6000, 25);
+		
+		new Train("D", "trn1", 25, LocalDateTime.of(2023, 12, 4, 03, 00), 1, "Elektrik", 2000, 1000, 3);
+		new Train("D", "trn2", 25, LocalDateTime.of(2023, 12, 4, 03, 30), 2, "Elektrik", 2000, 1000, 3);
+		new Train("D", "trn3", 25, LocalDateTime.of(2023, 12, 4, 04, 00), 2, "Elektrik",2000, 1000, 3);
+		
+		new Airplane("F", "pln3", 30, LocalDateTime.of(2023, 12, 4, 03, 00), 6, "Elektrik", 7500, 4000, 20);
+		new Airplane("F", "pln4", 30, LocalDateTime.of(2023, 12, 4, 04, 00), 6, "Elektrik", 7500, 4000, 20);
+		
 		new Personel("A", "oto1", "emre", "algan", true);
 	}
  }
