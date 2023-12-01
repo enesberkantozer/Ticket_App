@@ -24,8 +24,12 @@ import javax.swing.JComboBox;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JRadioButton;
+import javax.swing.JTable;
+
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class UpdateVecihlePanel extends JDialog {
 
@@ -43,7 +47,7 @@ public class UpdateVecihlePanel extends JDialog {
 	/**
 	 * Launch the application.
 	 */
-	public void updateRow(String[] args,DefaultTableModel tablemodel) {
+	public void updateRow(String[] args,JTable tablemodel) {
 		try {
 			UpdateVecihlePanel dialog = new UpdateVecihlePanel(args,tablemodel);
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
@@ -56,7 +60,7 @@ public class UpdateVecihlePanel extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public UpdateVecihlePanel(String[] args,DefaultTableModel tablemodel) {
+	public UpdateVecihlePanel(String[] args,JTable tablemodel) {
 		setBounds(100, 100, 379, 590);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -177,14 +181,17 @@ public class UpdateVecihlePanel extends JDialog {
 		contentPanel.add(lblYear);
 		
 		JComboBox comboYear = new JComboBox();
+		comboYear.setModel(new DefaultComboBoxModel(new String[] {"2023"}));
 		comboYear.setBounds(237, 420, 62, 21);
 		contentPanel.add(comboYear);
 		
 		JComboBox comboMonth = new JComboBox();
+		comboMonth.setModel(new DefaultComboBoxModel(new String[] {"Aralık"}));
 		comboMonth.setBounds(154, 420, 62, 21);
 		contentPanel.add(comboMonth);
 		
 		JComboBox comboDay = new JComboBox();
+		comboDay.setModel(new DefaultComboBoxModel(new String[] {"4", "5", "6", "7", "8", "9", "10"}));
 		comboDay.setBounds(70, 420, 62, 21);
 		contentPanel.add(comboDay);
 		
@@ -243,6 +250,48 @@ public class UpdateVecihlePanel extends JDialog {
 		JButton okButton = new JButton("OK");
 		okButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int month=0;
+				switch (comboMonth.getSelectedItem().toString()) {
+				case "Ocak":
+					month = 1;
+					break;
+				case "Şubat":
+					month = 2;
+					break;
+				case "Mart":
+					month = 3;
+					break;
+				case "Nisan":
+					month = 4;
+					break;
+				case "Mayıs":
+					month = 5;
+					break;
+				case "Haziran":
+					month = 6;
+					break;
+				case "Temmuz":
+					month = 7;
+					break;
+				case "Ağustos":
+					month = 8;
+					break;
+				case "Eylül":
+					month = 9;
+					break;
+				case "Ekim":
+					month = 10;
+					break;
+				case "Kasım":
+					month = 11;
+					break;
+				case "Aralık":
+					month = 12;
+					break;
+				}
+				DateTimeFormatter formatter=DateTimeFormatter.ofPattern("dd.MMM.yyyy HH:mm");
+				LocalDateTime date=LocalDateTime.of(Integer.parseInt(comboYear.getSelectedItem().toString()), month, Integer.parseInt(comboDay.getSelectedItem().toString()), 
+						Integer.parseInt(comboHour.getSelectedItem().toString()), Integer.parseInt(comboMinute.getSelectedItem().toString()));
 				int travelNo=Integer.parseInt(comboRoute.getSelectedItem().toString().substring(0, 1));
 				int capacity=Integer.parseInt(comboCapacity.getSelectedItem().toString());
 				if (rdBtnBus.isSelected()) {
@@ -252,8 +301,8 @@ public class UpdateVecihlePanel extends JDialog {
 				} else if (rdbtnAirplane.isSelected()) {
 //					new Airplane(args,txtVehicleID.getText(),capacity,travelNo,comboTypeOfFuel.getSelectedItem().toString(),Integer.parseInt(txtDriver.getText()),Integer.parseInt(txtService.getText()),Integer.parseInt(txtPriceOfFuel.getText()));
 				}
-				String[] data= {txtVehicleID.getText(),comboRoute.getSelectedItem().toString().substring(0, 1),comboCapacity.getSelectedItem().toString(),comboTypeOfFuel.getSelectedItem().toString(),txtPriceOfFuel.getText(),txtDriver.getText(),txtService.getText()};
-				tablemodel.addRow(data);
+				String[] data= {txtVehicleID.getText(),comboRoute.getSelectedItem().toString().substring(0, 1),comboCapacity.getSelectedItem().toString(),date.format(formatter),comboTypeOfFuel.getSelectedItem().toString(),txtPriceOfFuel.getText(),txtDriver.getText(),txtService.getText()};
+				tablemodel.getSelectedRow().
 				dispose();
 			}
 		});
@@ -273,6 +322,19 @@ public class UpdateVecihlePanel extends JDialog {
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowOpened(WindowEvent e) {
+				String[] h=new String[24];
+				for (int i = 0; i < 24; i++) {
+					h[i]=String.valueOf(i);
+				}
+				comboHour.setModel(new DefaultComboBoxModel(h));
+				String[] m=new String[60];
+				for (int i = 0; i < 60; i++) {
+					m[i]=String.valueOf(i);
+				}
+				comboMinute.setModel(new DefaultComboBoxModel(m));
+				comboDay.setModel(new DefaultComboBoxModel(new String[] {"4", "5", "6", "7", "8", "9", "10"}));
+				comboMonth.setModel(new DefaultComboBoxModel(new String[] {"Aralık"}));
+				comboYear.setModel(new DefaultComboBoxModel(new String[] {"2023"}));
 				if(args[0].equals("Bus"))
 				{
 					rdBtnBus.setSelected(true);
@@ -296,10 +358,44 @@ public class UpdateVecihlePanel extends JDialog {
 				txtVehicleID.setText(args[1]);
 				comboRoute.setSelectedItem(args[2]+". Sefer");
 				comboCapacity.setSelectedItem(args[3]);
-				comboTypeOfFuel.setSelectedItem(args[4]);
-				txtPriceOfFuel.setText(args[5]);
-				txtDriver.setText(args[6]);
-				txtService.setText(args[7]);
+				DateTimeFormatter formatter=DateTimeFormatter.ofPattern("dd.MMM.yyyy HH:mm");
+				LocalDateTime date=LocalDateTime.parse(args[4], formatter);
+				comboDay.setSelectedItem(String.valueOf(date.getDayOfMonth()));
+				String month="";
+				switch(date.getMonthValue()) {
+				case 1:
+					month="Ocak";break;
+				case 2:
+					month="Şubat";break;
+				case 3:
+					month="Mart";break;
+				case 4:
+					month="Nisan";break;
+				case 5:
+					month="Mayıs";break;
+				case 6:
+					month="Haziran";break;
+				case 7:
+					month="Temmuz";break;
+				case 8:
+					month="Ağustos";break;
+				case 9:
+					month="Eylül";break;
+				case 10:
+					month="Ekim";break;
+				case 11:
+					month="Kasım";break;
+				case 12:
+					month="Aralık";break;
+				}
+				comboMonth.setSelectedItem(month);
+				comboYear.setSelectedItem(String.valueOf(date.getYear()));
+				comboHour.setSelectedItem(String.valueOf(date.getHour()));
+				comboMinute.setSelectedItem(String.valueOf(date.getMinute()));
+				comboTypeOfFuel.setSelectedItem(args[5]);
+				txtPriceOfFuel.setText(args[6]);
+				txtDriver.setText(args[7]);
+				txtService.setText(args[8]);
 			}
 		});
 	}

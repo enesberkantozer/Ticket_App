@@ -81,7 +81,7 @@ public class CompanyFrame extends JFrame {
 		DefaultTableModel tablemodel = new DefaultTableModel();
 		table.setModel(tablemodel);
 		tablemodel.addColumn("Araç ID");
-		tablemodel.addColumn("Durum");
+		tablemodel.addColumn("Sefer No");
 		tablemodel.addColumn("Kapasite");
 		tablemodel.addColumn("Tarih-Saat");
 		tablemodel.addColumn("Yakıt Tipi");
@@ -148,7 +148,7 @@ public class CompanyFrame extends JFrame {
 						}
 					}
 					UpdateVecihlePanel updateRow=new UpdateVecihlePanel();
-					updateRow.updateRow(vhclData, tablemodel);
+					updateRow.updateRow(vhclData, table);
 				}
 			}
 		});
