@@ -1,5 +1,6 @@
 package prolab2;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 abstract public class Vehicle {
@@ -7,6 +8,7 @@ abstract public class Vehicle {
 	private String companyName;
 	private String vehicleId;
 	private int vehicleCapacity;
+	private LocalDateTime beginTime;
 	private int vehicleTravelNo;
 	private String typeFuel;
 	private int costDriver;
@@ -17,11 +19,12 @@ abstract public class Vehicle {
 	public static int vehicleCount=0;
 	public static ArrayList<Vehicle> vehiclesList=new ArrayList<Vehicle>();
 
-	public Vehicle(String companyName, String vehicleId, int vehicleCapacity, int vehicleTravelNo, String typuFuel,
+	public Vehicle(String companyName, String vehicleId, int vehicleCapacity, LocalDateTime beginTime, int vehicleTravelNo, String typuFuel,
 			int costDriver, int costService, int priceFuel) {
 		this.companyName = companyName;
 		this.vehicleId = vehicleId;
 		this.vehicleCapacity = vehicleCapacity;
+		this.beginTime=beginTime;
 		this.vehicleTravelNo = vehicleTravelNo;
 		this.typeFuel = typuFuel;
 		this.costDriver = costDriver;
@@ -51,6 +54,13 @@ abstract public class Vehicle {
 		this.vehicleCapacity = vehicleCapacity;
 	}
 
+	public LocalDateTime getBeginTime() {
+		return beginTime;
+	}
+	public void setBeginTime(LocalDateTime beginTime) {
+		this.beginTime = beginTime;
+	}
+	
 	public int getVehicleTravelNo() {
 		return vehicleTravelNo;
 	}

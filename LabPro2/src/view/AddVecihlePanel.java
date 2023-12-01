@@ -11,6 +11,7 @@ import javax.swing.table.DefaultTableModel;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDateTime;
 
 import prolab2.Bus;
 import prolab2.Train;
@@ -55,7 +56,7 @@ public class AddVecihlePanel extends JDialog {
 	 * Create the dialog.
 	 */
 	public AddVecihlePanel(String args,DefaultTableModel tablemodel) {
-		setBounds(100, 100, 379, 473);
+		setBounds(100, 100, 379, 590);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -155,6 +156,69 @@ public class AddVecihlePanel extends JDialog {
 		textField_3.setColumns(10);
 		textField_3.setBounds(164, 354, 163, 36);
 		contentPanel.add(textField_3);
+		
+		JComboBox comboDay = new JComboBox();
+		comboDay.setModel(new DefaultComboBoxModel(new String[] {"4", "5", "6", "7", "8", "9", "10"}));
+		comboDay.setBounds(69, 420, 62, 21);
+		contentPanel.add(comboDay);
+		
+		JLabel lblDay = new JLabel("Gün");
+		lblDay.setHorizontalAlignment(SwingConstants.CENTER);
+		lblDay.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblDay.setBounds(77, 400, 54, 21);
+		contentPanel.add(lblDay);
+		
+		JLabel lblMonth = new JLabel("Ay");
+		lblMonth.setHorizontalAlignment(SwingConstants.CENTER);
+		lblMonth.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblMonth.setBounds(151, 400, 54, 21);
+		contentPanel.add(lblMonth);
+		
+		JLabel lblYear = new JLabel("Yıl");
+		lblYear.setHorizontalAlignment(SwingConstants.CENTER);
+		lblYear.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblYear.setBounds(236, 400, 54, 21);
+		contentPanel.add(lblYear);
+		
+		JComboBox comboMonth = new JComboBox();
+		comboMonth.setModel(new DefaultComboBoxModel(new String[] {"Aralık"}));
+		comboMonth.setBounds(153, 420, 62, 21);
+		contentPanel.add(comboMonth);
+		
+		JComboBox comboYear = new JComboBox();
+		comboYear.setModel(new DefaultComboBoxModel(new String[] {"2023"}));
+		comboYear.setBounds(236, 420, 62, 21);
+		contentPanel.add(comboYear);
+		
+		JLabel lblHour = new JLabel("Saat");
+		lblHour.setHorizontalAlignment(SwingConstants.CENTER);
+		lblHour.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblHour.setBounds(121, 451, 54, 21);
+		contentPanel.add(lblHour);
+		
+		JLabel lblMinute = new JLabel("Dakika");
+		lblMinute.setHorizontalAlignment(SwingConstants.CENTER);
+		lblMinute.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblMinute.setBounds(185, 451, 54, 21);
+		contentPanel.add(lblMinute);
+		
+		JComboBox comboHour = new JComboBox();
+		String[] h=new String[24];
+		for (int i = 0; i < 24; i++) {
+			h[i]=String.valueOf(i);
+		}
+		comboHour.setModel(new DefaultComboBoxModel(h));
+		comboHour.setBounds(113, 482, 62, 21);
+		contentPanel.add(comboHour);
+		
+		JComboBox comboMinute = new JComboBox();
+		String[] m=new String[60];
+		for (int i = 0; i < 60; i++) {
+			m[i]=String.valueOf(i);
+		}
+		comboMinute.setModel(new DefaultComboBoxModel(m));
+		comboMinute.setBounds(185, 482, 62, 21);
+		contentPanel.add(comboMinute);
 
 		ActionListener whichRdBtn = new ActionListener() {
 
@@ -191,14 +255,19 @@ public class AddVecihlePanel extends JDialog {
 		JButton okButton = new JButton("OK");
 		okButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				LocalDateTime date=LocalDateTime.of(Integer.parseInt(comboYear.getSelectedItem().toString()),
+						Integer.parseInt(comboMonth.getSelectedItem().toString()),
+						Integer.parseInt(comboDay.getSelectedItem().toString()),
+						Integer.parseInt(comboHour.getSelectedItem().toString()),
+						Integer.parseInt(comboMinute.getSelectedItem().toString()));
 				int travelNo=Integer.parseInt(comboBox.getSelectedItem().toString().substring(0, 1));
 				int capacity=Integer.parseInt(comboBox_1.getSelectedItem().toString());
 				if (rdbtnNewRadioButton.isSelected()) {
-					new Bus(args,textField.getText(),capacity,travelNo,comboBox_2.getSelectedItem().toString(),Integer.parseInt(textField_2.getText()),Integer.parseInt(textField_3.getText()),Integer.parseInt(textField_1.getText()));
+					new Bus(args,textField.getText(),capacity,date,travelNo,comboBox_2.getSelectedItem().toString(),Integer.parseInt(textField_2.getText()),Integer.parseInt(textField_3.getText()),Integer.parseInt(textField_1.getText()));
 				} else if (rdbtnTren.isSelected()) {
-					new Train(args,textField.getText(),capacity,travelNo,comboBox_2.getSelectedItem().toString(),Integer.parseInt(textField_2.getText()),Integer.parseInt(textField_3.getText()),Integer.parseInt(textField_1.getText()));
+					new Train(args,textField.getText(),capacity,date,travelNo,comboBox_2.getSelectedItem().toString(),Integer.parseInt(textField_2.getText()),Integer.parseInt(textField_3.getText()),Integer.parseInt(textField_1.getText()));
 				} else if (rdbtnUak.isSelected()) {
-					new Airplane(args,textField.getText(),capacity,travelNo,comboBox_2.getSelectedItem().toString(),Integer.parseInt(textField_2.getText()),Integer.parseInt(textField_3.getText()),Integer.parseInt(textField_1.getText()));
+					new Airplane(args,textField.getText(),capacity,date,travelNo,comboBox_2.getSelectedItem().toString(),Integer.parseInt(textField_2.getText()),Integer.parseInt(textField_3.getText()),Integer.parseInt(textField_1.getText()));
 				}
 				String[] data= {textField.getText(),comboBox.getSelectedItem().toString().substring(0, 1),comboBox_1.getSelectedItem().toString(),comboBox_2.getSelectedItem().toString(),textField_1.getText(),textField_2.getText(),textField_3.getText()};
 				tablemodel.addRow(data);

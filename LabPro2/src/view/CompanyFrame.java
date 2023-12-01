@@ -18,6 +18,7 @@ import java.awt.Font;
 import javax.swing.JSeparator;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import javax.swing.table.DefaultTableModel;
@@ -82,6 +83,7 @@ public class CompanyFrame extends JFrame {
 		tablemodel.addColumn("Araç ID");
 		tablemodel.addColumn("Durum");
 		tablemodel.addColumn("Kapasite");
+		tablemodel.addColumn("Tarih-Saat");
 		tablemodel.addColumn("Yakıt Tipi");
 		tablemodel.addColumn("Yakıt Maliyeti");
 		tablemodel.addColumn("Çalışan Ücreti");
@@ -127,7 +129,7 @@ public class CompanyFrame extends JFrame {
 		btnNewButton_1_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(table.getSelectedRow() >= 0) {
-					String[] vhclData= new String[8];
+					String[] vhclData= new String[9];
 					for (int i = 0; i < Vehicle.vehicleCount; i++) {
 						Vehicle vhcl=Vehicle.vehiclesList.get(i);
 						if(vhcl.getCompanyName().equals(company.getCompanyName()) && vhcl.getVehicleId().equals(table.getValueAt(table.getSelectedRow(), 0).toString())) {
@@ -163,13 +165,14 @@ public class CompanyFrame extends JFrame {
 			@Override
 			public void windowOpened(WindowEvent e) {
 				if(Vehicle.vehicleCount>0) {
+					DateTimeFormatter formatter=DateTimeFormatter.ofPattern("dd.MMM.yyyy HH:mm");
 					ArrayList<Vehicle> vehicles = Vehicle.vehiclesList;
 					for (int i = 0; i < Vehicle.vehicleCount; i++) {
 						if(vehicles.get(i).getCompanyName().equals(company.getCompanyName())) {
 							String[] data= {vehicles.get(i).getVehicleId(),String.valueOf(vehicles.get(i).getVehicleTravelNo()),
-									String.valueOf(vehicles.get(i).getVehicleCapacity()),vehicles.get(i).getTypeFuel(),
-									String.valueOf(vehicles.get(i).getPriceFuel()), String.valueOf(vehicles.get(i).getCostDriver()),
-									String.valueOf(vehicles.get(i).getCostService())};
+									String.valueOf(vehicles.get(i).getVehicleCapacity()), vehicles.get(i).getBeginTime().format(formatter),
+									vehicles.get(i).getTypeFuel(), String.valueOf(vehicles.get(i).getPriceFuel()), 
+									String.valueOf(vehicles.get(i).getCostDriver()), String.valueOf(vehicles.get(i).getCostService())};
 							tablemodel.addRow(data);
 						}
 					}

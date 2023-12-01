@@ -57,7 +57,7 @@ public class UpdateVecihlePanel extends JDialog {
 	 * Create the dialog.
 	 */
 	public UpdateVecihlePanel(String[] args,DefaultTableModel tablemodel) {
-		setBounds(100, 100, 379, 473);
+		setBounds(100, 100, 379, 590);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -157,6 +157,56 @@ public class UpdateVecihlePanel extends JDialog {
 		txtService.setColumns(10);
 		txtService.setBounds(164, 354, 163, 36);
 		contentPanel.add(txtService);
+		
+		JLabel lblDay = new JLabel("Gün");
+		lblDay.setHorizontalAlignment(SwingConstants.CENTER);
+		lblDay.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblDay.setBounds(78, 400, 54, 21);
+		contentPanel.add(lblDay);
+		
+		JLabel lblMonth = new JLabel("Ay");
+		lblMonth.setHorizontalAlignment(SwingConstants.CENTER);
+		lblMonth.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblMonth.setBounds(152, 400, 54, 21);
+		contentPanel.add(lblMonth);
+		
+		JLabel lblYear = new JLabel("Yıl");
+		lblYear.setHorizontalAlignment(SwingConstants.CENTER);
+		lblYear.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblYear.setBounds(237, 400, 54, 21);
+		contentPanel.add(lblYear);
+		
+		JComboBox comboYear = new JComboBox();
+		comboYear.setBounds(237, 420, 62, 21);
+		contentPanel.add(comboYear);
+		
+		JComboBox comboMonth = new JComboBox();
+		comboMonth.setBounds(154, 420, 62, 21);
+		contentPanel.add(comboMonth);
+		
+		JComboBox comboDay = new JComboBox();
+		comboDay.setBounds(70, 420, 62, 21);
+		contentPanel.add(comboDay);
+		
+		JLabel lblHour = new JLabel("Saat");
+		lblHour.setHorizontalAlignment(SwingConstants.CENTER);
+		lblHour.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblHour.setBounds(122, 451, 54, 21);
+		contentPanel.add(lblHour);
+		
+		JLabel lblMinute = new JLabel("Dakika");
+		lblMinute.setHorizontalAlignment(SwingConstants.CENTER);
+		lblMinute.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblMinute.setBounds(186, 451, 54, 21);
+		contentPanel.add(lblMinute);
+		
+		JComboBox comboMinute = new JComboBox();
+		comboMinute.setBounds(186, 482, 62, 21);
+		contentPanel.add(comboMinute);
+		
+		JComboBox comboHour = new JComboBox();
+		comboHour.setBounds(114, 482, 62, 21);
+		contentPanel.add(comboHour);
 
 		ActionListener whichRdBtn = new ActionListener() {
 
