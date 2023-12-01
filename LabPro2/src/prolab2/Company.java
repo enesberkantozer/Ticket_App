@@ -26,7 +26,6 @@ public class Company extends User implements IProfitable{
 	public String getCompanyName() {
 		return companyName;
 	}
-
 	public void setCompanyName(String companyName) {
 		this.companyName = companyName;
 	}
@@ -34,7 +33,6 @@ public class Company extends User implements IProfitable{
 	public String getUsername() {
 		return username;
 	}
-
 	public void setUsername(String username) {
 		this.username = username;
 	}
@@ -42,7 +40,6 @@ public class Company extends User implements IProfitable{
 	public String getPassword() {
 		return password;
 	}
-
 	public void setPassword(String password) {
 		this.password = password;
 	}
