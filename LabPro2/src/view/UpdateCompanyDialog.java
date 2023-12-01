@@ -10,6 +10,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 import prolab2.Company;
+import prolab2.Vehicle;
 
 import javax.swing.JTextField;
 import javax.swing.JLabel;
@@ -100,6 +101,11 @@ public class UpdateCompanyDialog extends JDialog {
 				String[] data = { textField.getText(), textField_2.getText(), textField_3.getText() };
 				for (int i = 0; i < data.length; i++) {
 					tablemodel.setValueAt(data[i], selectedRow, i);
+				}
+				for (int i = 0; i < Vehicle.vehiclesList.size(); i++) {
+					if(Vehicle.vehiclesList.get(i).getCompanyName().equals(rowData[0])) {
+						Vehicle.vehiclesList.get(i).setCompanyName(textField.getText());
+					}
 				}
 				dispose();
 			}

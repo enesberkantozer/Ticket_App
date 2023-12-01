@@ -14,6 +14,7 @@ import java.awt.event.ActionListener;
 
 import prolab2.Bus;
 import prolab2.Train;
+import prolab2.Vehicle;
 import prolab2.Airplane;
 
 import javax.swing.JLabel;
@@ -302,7 +303,11 @@ public class UpdateVecihlePanel extends JDialog {
 //					new Airplane(args,txtVehicleID.getText(),capacity,travelNo,comboTypeOfFuel.getSelectedItem().toString(),Integer.parseInt(txtDriver.getText()),Integer.parseInt(txtService.getText()),Integer.parseInt(txtPriceOfFuel.getText()));
 				}
 				String[] data= {txtVehicleID.getText(),comboRoute.getSelectedItem().toString().substring(0, 1),comboCapacity.getSelectedItem().toString(),date.format(formatter),comboTypeOfFuel.getSelectedItem().toString(),txtPriceOfFuel.getText(),txtDriver.getText(),txtService.getText()};
-				tablemodel.getSelectedRow().
+				/*for (int i = 0; i < Vehicle.vehiclesList.size(); i++) {
+					if(Vehicle.vehiclesList.get(i).getCompanyName().equals(e)) {
+						
+					}
+				}*/
 				dispose();
 			}
 		});
