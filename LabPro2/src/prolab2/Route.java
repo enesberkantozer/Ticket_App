@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 public class Route {
 	
-	private ArrayList<String> travel = new ArrayList<String>();
+	public static ArrayList<String> travel = new ArrayList<>();
     public static Map<Integer, ArrayList<String>> travelNo = new HashMap<>();
 	public static int routeCount = 0;
 		
@@ -15,12 +15,6 @@ public class Route {
 		routeCount++;
 	}
 
-	public String getTravel(int x) {
-		return travel.get(x);
-	}
-	public void setTravel(String deger) {
-		travel.add(deger);
-	}
 
 	public static void main(String[] args) {
 //		 Seferin kalkıs, varıs noktalarını ve sefere ait mesafe bilgilerini içermeli
