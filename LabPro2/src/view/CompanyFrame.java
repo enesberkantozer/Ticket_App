@@ -129,7 +129,7 @@ public class CompanyFrame extends JFrame {
 		btnNewButton_1_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(table.getSelectedRow() >= 0) {
-					String[] vhclData= new String[9];
+					String[] vhclData= new String[10];
 					for (int i = 0; i < Vehicle.vehicleCount; i++) {
 						Vehicle vhcl=Vehicle.vehiclesList.get(i);
 						if(vhcl.getCompanyName().equals(company.getCompanyName()) && vhcl.getVehicleId().equals(table.getValueAt(table.getSelectedRow(), 0).toString())) {
@@ -142,11 +142,12 @@ public class CompanyFrame extends JFrame {
 							else if(vhcl instanceof Airplane) {
 								vhclData[0]="Airplane";
 							}
-							for (int j = 1; j < vhclData.length; j++) {
+							for (int j = 1; j < vhclData.length-1; j++) {
 								vhclData[j]=String.valueOf(table.getValueAt(table.getSelectedRow(), j-1));
 							}
 						}
 					}
+					vhclData[9]=company.getCompanyName();
 					UpdateVecihlePanel updateRow=new UpdateVecihlePanel();
 					updateRow.updateRow(vhclData, table);
 				}

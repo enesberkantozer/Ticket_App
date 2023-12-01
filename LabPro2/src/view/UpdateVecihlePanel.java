@@ -293,21 +293,23 @@ public class UpdateVecihlePanel extends JDialog {
 				DateTimeFormatter formatter=DateTimeFormatter.ofPattern("dd.MMM.yyyy HH:mm");
 				LocalDateTime date=LocalDateTime.of(Integer.parseInt(comboYear.getSelectedItem().toString()), month, Integer.parseInt(comboDay.getSelectedItem().toString()), 
 						Integer.parseInt(comboHour.getSelectedItem().toString()), Integer.parseInt(comboMinute.getSelectedItem().toString()));
-				int travelNo=Integer.parseInt(comboRoute.getSelectedItem().toString().substring(0, 1));
-				int capacity=Integer.parseInt(comboCapacity.getSelectedItem().toString());
-				if (rdBtnBus.isSelected()) {
-//					new Bus(args,txtVehicleID.getText(),capacity,travelNo,comboTypeOfFuel.getSelectedItem().toString(),Integer.parseInt(txtDriver.getText()),Integer.parseInt(txtService.getText()),Integer.parseInt(txtPriceOfFuel.getText()));
-				} else if (rdbtnTrain.isSelected()) {
-//					new Train(args,txtVehicleID.getText(),capacity,travelNo,comboTypeOfFuel.getSelectedItem().toString(),Integer.parseInt(txtDriver.getText()),Integer.parseInt(txtService.getText()),Integer.parseInt(txtPriceOfFuel.getText()));
-				} else if (rdbtnAirplane.isSelected()) {
-//					new Airplane(args,txtVehicleID.getText(),capacity,travelNo,comboTypeOfFuel.getSelectedItem().toString(),Integer.parseInt(txtDriver.getText()),Integer.parseInt(txtService.getText()),Integer.parseInt(txtPriceOfFuel.getText()));
-				}
 				String[] data= {txtVehicleID.getText(),comboRoute.getSelectedItem().toString().substring(0, 1),comboCapacity.getSelectedItem().toString(),date.format(formatter),comboTypeOfFuel.getSelectedItem().toString(),txtPriceOfFuel.getText(),txtDriver.getText(),txtService.getText()};
-				/*for (int i = 0; i < Vehicle.vehiclesList.size(); i++) {
-					if(Vehicle.vehiclesList.get(i).getCompanyName().equals(e)) {
-						
+				for (int i = 0; i < Vehicle.vehiclesList.size(); i++) {
+					if(Vehicle.vehiclesList.get(i).getCompanyName().equals(args[9]) && Vehicle.vehiclesList.get(i).getVehicleId().equals(args[1])) {
+						Vehicle v=Vehicle.vehiclesList.get(i);
+						v.setVehicleId(txtVehicleID.getText());
+						v.setVehicleTravelNo(Integer.parseInt(comboRoute.getSelectedItem().toString().substring(0, 1)));
+						v.setVehicleCapacity(Integer.parseInt(comboCapacity.getSelectedItem().toString()));
+						v.setTypeFuel(comboTypeOfFuel.getSelectedItem().toString());
+						v.setPriceFuel(Integer.parseInt(txtPriceOfFuel.getText()));
+						v.setCostDriver(Integer.valueOf(txtDriver.getText()));
+						v.setCostService(Integer.parseInt(txtService.getText()));
+						v.setBeginTime(date);
 					}
-				}*/
+				}
+				for (int i = 0; i < tablemodel.getColumnCount(); i++) {
+					tablemodel.setValueAt(data[i], tablemodel.getSelectedRow(), i);
+				}
 				dispose();
 			}
 		});
