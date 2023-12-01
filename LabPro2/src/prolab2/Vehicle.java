@@ -21,6 +21,11 @@ abstract public class Vehicle {
 	public Vehicle(String companyName, String vehicleId, int vehicleCapacity, LocalDateTime beginTime, int vehicleTravelNo, String typuFuel,
 			int costDriver, int costService, int priceFuel) {
 		
+		new Personel(companyName, vehicleId, "", "", true);
+		new Personel(companyName, vehicleId, "", "", true);
+		new Personel(companyName, vehicleId, "", "", false);
+		new Personel(companyName, vehicleId, "", "", false);
+
 		this.companyName = companyName;
 		this.vehicleId = vehicleId;
 		this.vehicleCapacity = vehicleCapacity;

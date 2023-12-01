@@ -84,6 +84,5 @@ public class Company extends User implements IProfitable{
 		new Airplane("F", "pln3", 30, LocalDateTime.of(2023, 12, 4, 03, 00), 6, "Elektrik", 7500, 4000, 20);
 		new Airplane("F", "pln4", 30, LocalDateTime.of(2023, 12, 4, 04, 00), 6, "Elektrik", 7500, 4000, 20);
 		
-		new Personel("A", "oto1", "emre", "algan", true);
 	}
  }
