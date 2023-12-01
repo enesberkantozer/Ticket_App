@@ -15,12 +15,12 @@ abstract public class Vehicle {
 	private int costService;
 	private int priceFuel;
 	
-	
 	public static int vehicleCount=0;
 	public static ArrayList<Vehicle> vehiclesList=new ArrayList<Vehicle>();
 
 	public Vehicle(String companyName, String vehicleId, int vehicleCapacity, LocalDateTime beginTime, int vehicleTravelNo, String typuFuel,
 			int costDriver, int costService, int priceFuel) {
+		
 		this.companyName = companyName;
 		this.vehicleId = vehicleId;
 		this.vehicleCapacity = vehicleCapacity;
@@ -32,7 +32,7 @@ abstract public class Vehicle {
 		this.priceFuel = priceFuel;
 		vehicleCount++;
 	}
-	
+
 	public String getCompanyName() {
 		return companyName;
 	}
