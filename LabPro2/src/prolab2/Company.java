@@ -109,8 +109,8 @@ public class Company extends User implements IProfitable{
 		new Train("D", "trn2", 25, LocalDateTime.of(2023, 12, 4, 03, 30), 2, "Elektrik", 2000, 1000, 3);
 		new Train("D", "trn3", 25, LocalDateTime.of(2023, 12, 4, 04, 00), 2, "Elektrik",2000, 1000, 3);
 		
-		new Airplane("F", "pln3", 30, LocalDateTime.of(2023, 12, 4, 03, 00), 6, "Elektrik", 7500, 4000, 20);
-		new Airplane("F", "pln4", 30, LocalDateTime.of(2023, 12, 4, 04, 00), 6, "Elektrik", 7500, 4000, 20);
+		new Airplane("F", "pln3", 30, LocalDateTime.of(2023, 12, 4, 03, 00), 6, "Gaz", 7500, 4000, 20);
+		new Airplane("F", "pln4", 30, LocalDateTime.of(2023, 12, 4, 04, 00), 6, "Gaz", 7500, 4000, 20);
 		
 	}
  }
