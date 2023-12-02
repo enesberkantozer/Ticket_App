@@ -9,7 +9,6 @@ public class Master {
 		
 		Admin.main(null);
 		Company.main(null);
-		//Trip.main(null);
 		LoginFrame loginFrame=new LoginFrame();
 		loginFrame.execute(0);
 		

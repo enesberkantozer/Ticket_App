@@ -66,20 +66,21 @@ public class Company extends User implements IProfitable{
 		int price = 1000;
 		for(int i = 0; i < Vehicle.vehiclesList.size(); i++) {
 			Vehicle v = Vehicle.vehiclesList.get(i);
-			if(v.getCompanyName() == companyName) {
+			if(v.getCompanyName().equals(companyName)) {
 				price += ( v.getCostDriver() + v.getCostService() )* 4;
 				int a = v.getVehicleTravelNo();
 				Map<String, Integer[]> info = new HashMap<>();
-				
+				String typeRoute = Route.travelNo.get(a).get(0);
+				info = typeRoute.equals("Karayolu") ? Trip.infoBus : 
+					(typeRoute.equals("Demiryolu") ? Trip.infoTrain : Trip.infoAirplane);
 				for(int j = 1; j < Route.travelNo.get(a).size() -1 ; j++) {
-					String typeRoute = Route.travelNo.get(a).get(0);
-					info = typeRoute.equals("Karayolu") ? Trip.infoBus : 
-						(typeRoute.equals("Demiryolu") ? Trip.infoTrain : Trip.infoAirplane);
-
+					
 					String city = Route.travelNo.get(a).get(j).toString() + "-" 
 							+ Route.travelNo.get(a).get(j + 1).toString();
-					Integer dizi[] = info.get(city);
-					price += (v.getPriceFuel() * dizi[1]); 
+					System.out.println("city: " + city);
+					Integer dizi[] = info.get(city); // 0. indis fiyat 1. indis km
+					System.out.println("km " + dizi[1]);
+			        price += (v.getPriceFuel() * dizi[1]);
 				}
 			}
 		}

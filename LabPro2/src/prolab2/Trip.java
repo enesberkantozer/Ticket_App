@@ -83,10 +83,10 @@ public class Trip {
 		infoTrain.put("Konya-Eskişehir", new Integer[] { 150, 225 });
 
 		infoAirplane.put("İstanbul-Ankara", new Integer[] { 1000, 250 });
-		infoAirplane.put("İstanbul-Konya", new Integer[] { 1200, 250 });
+		infoAirplane.put("İstanbul-Konya", new Integer[] { 1200, 300 });
 
 		infoAirplane.put("Ankara-İstanbul", new Integer[] { 1000, 250 });
-		infoAirplane.put("Konya-İstanbul", new Integer[] { 1200, 250 });
+		infoAirplane.put("Konya-İstanbul", new Integer[] { 1200, 300 });
 
 		/* ArrayList<String> busRoute = new ArrayList<>();
 
@@ -131,6 +131,7 @@ public class Trip {
 		 */
 		seferBul("İstanbul","Eskişehir", LocalDateTime.of(2023,12,5,20,25));
 		System.out.println(Company.companysList.get(0).profit("F"));
+
 	}
 
 	public static void seferBul(String kalkis, String varis, LocalDateTime date) {
