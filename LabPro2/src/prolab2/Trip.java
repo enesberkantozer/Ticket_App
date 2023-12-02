@@ -22,14 +22,19 @@ public class Trip {
 
 	public static void main(String[] args) {
 
-		new Route(1, new ArrayList<String>(List.of("Demiryolu", "İstanbul", "Kocaeli", "Bilecik", "Eskişehir", "Ankara")));
-		new Route(2, new ArrayList<String>(List.of("Demiryolu", "İstanbul", "Kocaeli", "Bilecik", "Eskişehir", "Konya")));
-		new Route(3, new ArrayList<String>(List.of("Karayolu", "İstanbul", "Kocaeli", "Ankara")));
-		new Route(4, new ArrayList<String>(List.of("Karayolu", "İstanbul", "Kocaeli", "Eskişehir", "Konya")));
-		new Route(5, new ArrayList<String>(List.of("Havayolu", "İstanbul", "Konya")));
-		new Route(6, new ArrayList<String>(List.of("Havayolu", "İstanbul", "Ankara")));
+		new Route(1, new ArrayList<String>(List.of("Demiryolu", "İstanbul", "Kocaeli", "Bilecik", "Eskişehir", "Ankara",
+				"Eskişehir", "Bilecik", "Kocaeli", "İstanbul")));
+		new Route(2, new ArrayList<String>(List.of("Demiryolu", "İstanbul", "Kocaeli", "Bilecik", "Eskişehir", "Konya", 
+				"Eskişehir", "Bilecik", "Kocaeli", "İstanbul")));
+				
+		new Route(3, new ArrayList<String>(List.of("Karayolu", "İstanbul", "Kocaeli", "Ankara", "Kocaeli", "İstanbul",
+				"Kocaeli", "Ankara", "Kocaeli", "İstanbul")));
+		new Route(4, new ArrayList<String>(List.of("Karayolu", "İstanbul", "Kocaeli", "Eskişehir", "Konya",
+				"Eskişehir", "Kocaeli", "İstanbul")));
+		new Route(5, new ArrayList<String>(List.of("Havayolu", "İstanbul", "Konya", "İstanbul")));
+		new Route(6, new ArrayList<String>(List.of("Havayolu", "İstanbul", "Ankara", "İstanbul")));
 
-		infoBus.put("İstanbul-Kocaeli", new Integer[] { 50, 100 }); // km, fiyat, saat
+		infoBus.put("İstanbul-Kocaeli", new Integer[] { 50, 100 }); //  fiyat, km
 		infoBus.put("İstanbul-Eskişehir", new Integer[] { 150, 300 });
 		infoBus.put("İstanbul-Ankara", new Integer[] { 300, 500 });
 		infoBus.put("İstanbul-Konya", new Integer[] { 300, 600 });
@@ -83,7 +88,7 @@ public class Trip {
 		infoAirplane.put("Ankara-İstanbul", new Integer[] { 1000, 250 });
 		infoAirplane.put("Konya-İstanbul", new Integer[] { 1200, 250 });
 
-		ArrayList<String> busRoute = new ArrayList<>();
+		/* ArrayList<String> busRoute = new ArrayList<>();
 
 		busRoute.add("İstanbul-Kocaeli");
 		busRoute.add("İstanbul-Eskişehir");
@@ -103,7 +108,7 @@ public class Trip {
 		busRoute.add("Konya-Kocaeli");
 		busRoute.add("Konya-Eskişehir");
 
-		/*
+		
 		 * timeTrain.put("İstanbul-Kocaeli", ); timeTrain.put("İstanbul-Bilecik", );
 		 * timeTrain.put("İstanbul-Eskişehir", ); timeTrain.put("İstanbul-Ankara", );
 		 * timeTrain.put("İstanbul-Konya",); timeTrain.put("Kocaeli-Bilecik", );
@@ -125,6 +130,7 @@ public class Trip {
 		 * timeAirplane.put("Ankara-İstanbul",); timeAirplane.put("Konya-İstanbul", );
 		 */
 		seferBul("İstanbul","Eskişehir", LocalDateTime.of(2023,12,5,20,25));
+		System.out.println(Company.companysList.get(0).profit("F"));
 	}
 
 	public static void seferBul(String kalkis, String varis, LocalDateTime date) {
@@ -149,6 +155,7 @@ public class Trip {
 //				}
 //			}
 //		}
+		
 		Master.main(null);
 		DateTimeFormatter formatter=DateTimeFormatter.ofPattern("dd.MMM.yyyy HH:mm");
 		for (int i = 1; i <= Route.travelNo.size(); i++) {

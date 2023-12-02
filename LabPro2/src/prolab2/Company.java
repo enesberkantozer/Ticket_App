@@ -2,6 +2,8 @@ package prolab2;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Company extends User implements IProfitable{
 	
@@ -59,7 +61,30 @@ public class Company extends User implements IProfitable{
 		arac.add(deger);
 	}
 	
-	
+	public int profit(String companyName) {
+		
+		int price = 1000;
+		for(int i = 0; i < Vehicle.vehiclesList.size(); i++) {
+			Vehicle v = Vehicle.vehiclesList.get(i);
+			if(v.getCompanyName() == companyName) {
+				price += ( v.getCostDriver() + v.getCostService() )* 4;
+				int a = v.getVehicleTravelNo();
+				Map<String, Integer[]> info = new HashMap<>();
+				
+				for(int j = 1; j < Route.travelNo.get(a).size() -1 ; j++) {
+					String typeRoute = Route.travelNo.get(a).get(0);
+					info = typeRoute.equals("Karayolu") ? Trip.infoBus : 
+						(typeRoute.equals("Demiryolu") ? Trip.infoTrain : Trip.infoAirplane);
+
+					String city = Route.travelNo.get(a).get(j).toString() + "-" 
+							+ Route.travelNo.get(a).get(j + 1).toString();
+					Integer dizi[] = info.get(city);
+					price += (v.getPriceFuel() * dizi[1]); 
+				}
+			}
+		}
+		return price;
+	}
 	
 	public static void main(String[] args) {
 		
