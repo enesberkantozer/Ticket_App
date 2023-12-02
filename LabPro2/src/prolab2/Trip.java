@@ -24,13 +24,16 @@ public class Trip {
 
 		new Route(1, new ArrayList<String>(List.of("Demiryolu", "İstanbul", "Kocaeli", "Bilecik", "Eskişehir", "Ankara",
 				"Eskişehir", "Bilecik", "Kocaeli", "İstanbul")));
+		
 		new Route(2, new ArrayList<String>(List.of("Demiryolu", "İstanbul", "Kocaeli", "Bilecik", "Eskişehir", "Konya", 
 				"Eskişehir", "Bilecik", "Kocaeli", "İstanbul")));
-				
+		
 		new Route(3, new ArrayList<String>(List.of("Karayolu", "İstanbul", "Kocaeli", "Ankara", "Kocaeli", "İstanbul",
 				"Kocaeli", "Ankara", "Kocaeli", "İstanbul")));
+		
 		new Route(4, new ArrayList<String>(List.of("Karayolu", "İstanbul", "Kocaeli", "Eskişehir", "Konya",
 				"Eskişehir", "Kocaeli", "İstanbul")));
+		
 		new Route(5, new ArrayList<String>(List.of("Havayolu", "İstanbul", "Konya", "İstanbul")));
 		new Route(6, new ArrayList<String>(List.of("Havayolu", "İstanbul", "Ankara", "İstanbul")));
 
