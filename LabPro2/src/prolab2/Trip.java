@@ -2,6 +2,7 @@ package prolab2;
 
 import java.security.PublicKey;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 //Her seferin bir aracı, guzergahı, zamanı, fiyatı gibi bilgiler bulunmalıdır
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -125,30 +126,53 @@ public class Trip {
 		 * 
 		 * timeAirplane.put("Ankara-İstanbul",); timeAirplane.put("Konya-İstanbul", );
 		 */
-		arama(busRoute);
+		seferBul("Bilecik","Eskisehir");
 	}
 
-	public static void arama(ArrayList<String> busRoute) {
-		for (int i = 0; i < busRoute.size(); i++) {
-			String[] cities = busRoute.get(i).split("-");
-
-			// Ayırılan şehirleri ayrı değişkenlere atayabilir veya kullanabilirsiniz
-			String departureCity = cities[0]; // Kocaeli
-			String arrivalCity = cities[1]; // İstanbul
-
-			for (int j = 1; j < Route.travelNo.size(); j++) {
-				if (Route.travel.get(0).equals("Karayolu") && Route.travel.get(j).contains(cities[0])
-						&& Route.travelNo.get(j ).contains(cities[1])) {
-					System.out.println("Girdi");
-					for (int k = 0; k < Vehicle.vehiclesList.size(); k++) {
-						if (Vehicle.vehiclesList.get(k).getVehicleTravelNo() == (i + 1)) {
-							timeBus.put(busRoute.get(i), new LocalDateTime[] { Vehicle.vehiclesList.get(k).getBeginTime() });
-							System.out.println(Vehicle.vehiclesList.get(k).getBeginTime());
-						}
-
+	public static void seferBul(String kalkis, String varis) {
+//		for (int i = 0; i < busRoute.size(); i++) {
+//			String[] cities = busRoute.get(i).split("-");
+//
+//			// Ayırılan şehirleri ayrı değişkenlere atayabilir veya kullanabilirsiniz
+//			String departureCity = cities[0]; // Kocaeli
+//			String arrivalCity = cities[1]; // İstanbul
+//
+//			for (int j = 1; j < Route.travelNo.size(); j++) {
+//				if (Route.travel.get(0).equals("Karayolu") && Route.travel.get(j).contains(cities[0])
+//						&& Route.travelNo.get(j ).contains(cities[1])) {
+//					System.out.println("Girdi");
+//					for (int k = 0; k < Vehicle.vehiclesList.size(); k++) {
+//						if (Vehicle.vehiclesList.get(k).getVehicleTravelNo() == (i + 1)) {
+//							timeBus.put(busRoute.get(i), new LocalDateTime[] { Vehicle.vehiclesList.get(k).getBeginTime() });
+//							System.out.println(Vehicle.vehiclesList.get(k).getBeginTime());
+//						}
+//
+//					}
+//				}
+//			}
+//		}
+		Master.main(null);
+		DateTimeFormatter formatter=DateTimeFormatter.ofPattern("dd.MMM.yyyy HH:mm");
+		for (int i = 1; i <= Route.travelNo.size(); i++) {
+			ArrayList<String> route=Route.travelNo.get(i);
+			if(route.contains(kalkis)&&route.contains(varis)) {
+				System.out.println(i);
+				for (int j = 0; j < Vehicle.vehiclesList.size(); j++) {
+					Vehicle v=Vehicle.vehiclesList.get(j);
+					if(v.getVehicleTravelNo()==i) {
+						System.out.print(v.getCompanyName()+" firmasının ");
+						System.out.print(v.getVehicleTravelNo()+" sefer sayılı ");
+						System.out.print(v.getVehicleCapacity()+" kişilik ");
+						System.out.print((v instanceof Bus)? "otobüsü ": (v instanceof Train)? "treni ": "uçağı ");
+						System.out.print(v.getBeginTime().format(formatter)+" saat ve ");
+						System.out.print(route.get(1)+" kalkışlı seferi vardır. ");
+						System.out.print(kalkis+" şehrine ");
+						int to=route.indexOf(kalkis)-1;
+						System.out.println(v.getBeginTime().plusMinutes(45*to).format(formatter)+ " saatinde ulaşacaktır.");
 					}
 				}
 			}
+			
 		}
 	}
 }
