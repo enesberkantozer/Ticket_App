@@ -16,20 +16,18 @@ public class Trip {
 	public static Map<String, Integer[]> infoTrain = new HashMap<>();
 	public static Map<String, Integer[]> infoAirplane = new HashMap<>();
 
-	public static Map<String, LocalDateTime[]> timeBus = new HashMap<>();
+	/* public static Map<String, LocalDateTime[]> timeBus = new HashMap<>();
 	public static Map<String, LocalDateTime[]> timeTrain = new HashMap<>();
-	public static Map<String, LocalDateTime[]> timeAirplane = new HashMap<>();
+	public static Map<String, LocalDateTime[]> timeAirplane = new HashMap<>(); */
 
 	public static void main(String[] args) {
 
-		new Route(1,
-				new ArrayList<String>(List.of("Demiryolu", "Istanbul", "Kocaeli", "Bilecik", "Eskisehir", "Ankara")));
-		new Route(2,
-				new ArrayList<String>(List.of("Demiryolu", "Istanbul", "Kocaeli", "Bilecik", "Eskisehir", "Konya")));
-		new Route(3, new ArrayList<String>(List.of("Karayolu", "Istanbul", "Kocaeli", "Ankara")));
-		new Route(4, new ArrayList<String>(List.of("Karayolu", "Istanbul", "Kocaeli", "Eskisehir", "Konya")));
-		new Route(5, new ArrayList<String>(List.of("Havayolu", "Istanbul", "Konya")));
-		new Route(6, new ArrayList<String>(List.of("Havayolu", "Istanbul", "Ankara")));
+		new Route(1, new ArrayList<String>(List.of("Demiryolu", "İstanbul", "Kocaeli", "Bilecik", "Eskişehir", "Ankara")));
+		new Route(2, new ArrayList<String>(List.of("Demiryolu", "İstanbul", "Kocaeli", "Bilecik", "Eskişehir", "Konya")));
+		new Route(3, new ArrayList<String>(List.of("Karayolu", "İstanbul", "Kocaeli", "Ankara")));
+		new Route(4, new ArrayList<String>(List.of("Karayolu", "İstanbul", "Kocaeli", "Eskişehir", "Konya")));
+		new Route(5, new ArrayList<String>(List.of("Havayolu", "İstanbul", "Konya")));
+		new Route(6, new ArrayList<String>(List.of("Havayolu", "İstanbul", "Ankara")));
 
 		infoBus.put("İstanbul-Kocaeli", new Integer[] { 50, 100 }); // km, fiyat, saat
 		infoBus.put("İstanbul-Eskişehir", new Integer[] { 150, 300 });
@@ -126,7 +124,7 @@ public class Trip {
 		 * 
 		 * timeAirplane.put("Ankara-İstanbul",); timeAirplane.put("Konya-İstanbul", );
 		 */
-		seferBul("Bilecik","Eskisehir");
+		seferBul("İstanbul","Eskişehir");
 	}
 
 	public static void seferBul(String kalkis, String varis) {

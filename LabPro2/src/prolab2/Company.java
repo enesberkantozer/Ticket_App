@@ -59,6 +59,7 @@ public class Company extends User implements IProfitable{
 		arac.add(deger);
 	}
 	
+	
 	public static void main(String[] args) {
 		
 		
