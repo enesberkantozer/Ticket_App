@@ -124,10 +124,10 @@ public class Trip {
 		 * 
 		 * timeAirplane.put("Ankara-İstanbul",); timeAirplane.put("Konya-İstanbul", );
 		 */
-		seferBul("İstanbul","Eskişehir");
+		seferBul("İstanbul","Eskişehir", 4);
 	}
 
-	public static void seferBul(String kalkis, String varis) {
+	public static void seferBul(String kalkis, String varis, int day) {
 //		for (int i = 0; i < busRoute.size(); i++) {
 //			String[] cities = busRoute.get(i).split("-");
 //

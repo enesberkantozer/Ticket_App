@@ -60,6 +60,7 @@ public class Company extends User implements IProfitable{
 	}
 	
 	
+	
 	public static void main(String[] args) {
 		
 		
