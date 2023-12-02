@@ -124,10 +124,10 @@ public class Trip {
 		 * 
 		 * timeAirplane.put("Ankara-İstanbul",); timeAirplane.put("Konya-İstanbul", );
 		 */
-		seferBul("İstanbul","Eskişehir", 4);
+		seferBul("İstanbul","Eskişehir", LocalDateTime.of(2023,12,5,20,25));
 	}
 
-	public static void seferBul(String kalkis, String varis, int day) {
+	public static void seferBul(String kalkis, String varis, LocalDateTime date) {
 //		for (int i = 0; i < busRoute.size(); i++) {
 //			String[] cities = busRoute.get(i).split("-");
 //
@@ -157,16 +157,18 @@ public class Trip {
 				System.out.println(i);
 				for (int j = 0; j < Vehicle.vehiclesList.size(); j++) {
 					Vehicle v=Vehicle.vehiclesList.get(j);
-					if(v.getVehicleTravelNo()==i) {
-						System.out.print(v.getCompanyName()+" firmasının ");
-						System.out.print(v.getVehicleTravelNo()+" sefer sayılı ");
-						System.out.print(v.getVehicleCapacity()+" kişilik ");
-						System.out.print((v instanceof Bus)? "otobüsü ": (v instanceof Train)? "treni ": "uçağı ");
-						System.out.print(v.getBeginTime().format(formatter)+" saat ve ");
-						System.out.print(route.get(1)+" kalkışlı seferi vardır. ");
-						System.out.print(kalkis+" şehrine ");
-						int to=route.indexOf(kalkis)-1;
-						System.out.println(v.getBeginTime().plusMinutes(45*to).format(formatter)+ " saatinde ulaşacaktır.");
+					if(date.getDayOfYear()<=v.getBeginTime().getDayOfYear()&& date.getYear()<=v.getBeginTime().getYear()) {
+						if(v.getVehicleTravelNo()==i) {
+							System.out.print(v.getCompanyName()+" firmasının ");
+							System.out.print(v.getVehicleTravelNo()+" sefer sayılı ");
+							System.out.print(v.getVehicleCapacity()+" kişilik ");
+							System.out.print((v instanceof Bus)? "otobüsü ": (v instanceof Train)? "treni ": "uçağı ");
+							System.out.print(v.getBeginTime().format(formatter)+" saat ve ");
+							System.out.print(route.get(1)+" kalkışlı seferi vardır. ");
+							System.out.print(kalkis+" şehrine ");
+							int to=route.indexOf(kalkis)-1;
+							System.out.println(v.getBeginTime().plusMinutes(45*to).format(formatter)+ " saatinde ulaşacaktır.");
+						}
 					}
 				}
 			}
