@@ -19,10 +19,13 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.event.ActionListener;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class LoginFrame extends JFrame {
+	public LoginFrame() {
+	}
 	
 	private static final long serialVersionUID = 1L;
 
@@ -70,7 +73,7 @@ public class LoginFrame extends JFrame {
 		UserPanel.add(dayComboBox);
 		
 		JComboBox monthComboBox = new JComboBox();
-		monthComboBox.setModel(new DefaultComboBoxModel(new String[] {"Kasım"}));
+		monthComboBox.setModel(new DefaultComboBoxModel(new String[] {"Aralık"}));
 		monthComboBox.setBounds(500, 49, 103, 35);
 		UserPanel.add(monthComboBox);
 		
@@ -124,17 +127,40 @@ public class LoginFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				for (int i = 1; i <= Route.travelNo.size(); i++) {
-				    ArrayList<String> currentTravel = Route.travelNo.get(i);
-				    for(int j = 0; currentTravel.get(j) != null; j++)
-				    {
-				    	if (currentTravel.get(j).toString().equals ( beginRouteComboBox.getSelectedItem())
-				            && currentTravel.get(j).toString().equals ( endRouteComboBox.getSelectedItem())) {
-				    		System.out.println(currentTravel.get(i));
-				    }
-				    }
+				int month = 0;
+				switch(monthComboBox.getSelectedItem().toString()) {
+				case "Ocak":
+					month=1;break;
+				case "Şubat":
+					month=2;break;
+				case "Mart":
+					month=3;break;
+				case "Nisan":
+					month=4;break;
+				case "Mayıs":
+					month=5;break;
+				case "Haziran":
+					month=6;break;
+				case "Temmuz":
+					month=7;break;
+				case "Ağustos":
+					month=8;break;
+				case "Eylül":
+					month=9;break;
+				case "Ekim":
+					month=10;break;
+				case "Kasım":
+					month=11;break;
+				case "Aralık":
+					month=12;break;
 				}
-
+				TravelSearchFrame findTrip=new TravelSearchFrame(beginRouteComboBox.getSelectedItem().toString(),
+						endRouteComboBox.getSelectedItem().toString(),LocalDateTime.of(
+								Integer.parseInt(yearComboBox.getSelectedItem().toString()),
+								month,
+								Integer.parseInt(dayComboBox.getSelectedItem().toString()),0,0));
+				findTrip.execute();
+				dispose();
 			}
 		});
 		

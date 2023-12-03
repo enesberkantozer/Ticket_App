@@ -1,5 +1,7 @@
 package view;
 
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -20,6 +22,17 @@ public class VehicleTemplate {
 				buttons.get(i).setEnabled(false);
 			}
 		}
+	}
+	
+	public void execute(TravelSearchFrame returnFrame) {
+		frame.setVisible(true);
+		frame.addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosed(WindowEvent e) {
+				returnFrame.execute();
+			}
+			
+		});
 	}
 	
 	public void execute() {

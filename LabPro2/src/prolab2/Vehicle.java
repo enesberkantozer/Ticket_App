@@ -141,7 +141,10 @@ abstract public class Vehicle {
 	private void randomSeat() {
 		Random rdn=new Random();
 		
-		int rdnFor=rdn.nextInt(vehicleCapacity);
+		int rdnFor;
+		do {
+			rdnFor=rdn.nextInt(vehicleCapacity);
+		}while(rdnFor!=0);
 		
 		for (int i = 0; i < rdnFor; i++) {
 			int rdnSeat=rdn.nextInt(vehicleCapacity);

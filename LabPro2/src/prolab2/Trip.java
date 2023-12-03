@@ -132,12 +132,12 @@ public class Trip {
 		 * 
 		 * timeAirplane.put("Ankara-İstanbul",); timeAirplane.put("Konya-İstanbul", );
 		 */
-		seferBul("İstanbul","Eskişehir", LocalDateTime.of(2023,12,5,20,25));
-		System.out.println(Company.companysList.get(0).profit("F"));
+		//System.out.println(seferBul("İstanbul","Eskişehir", LocalDateTime.of(2023,12,4,0,0)));
+		//System.out.println(Company.companysList.get(0).profit("F"));
 
 	}
 
-	public static void seferBul(String kalkis, String varis, LocalDateTime date) {
+	public static ArrayList<String> seferBul(String kalkis, String varis, LocalDateTime date) {
 //		for (int i = 0; i < busRoute.size(); i++) {
 //			String[] cities = busRoute.get(i).split("-");
 //
@@ -159,8 +159,8 @@ public class Trip {
 //				}
 //			}
 //		}
-		
-		Master.main(null);
+		ArrayList<String> tripDetail=new ArrayList<String>();
+		//Master.main(null);
 		DateTimeFormatter formatter=DateTimeFormatter.ofPattern("dd.MMM.yyyy HH:mm");
 		for (int i = 1; i <= Route.travelNo.size(); i++) {
 			ArrayList<String> route=Route.travelNo.get(i);
@@ -179,11 +179,17 @@ public class Trip {
 							System.out.print(kalkis+" şehrine ");
 							int to=route.indexOf(kalkis)-1;
 							System.out.println(v.getBeginTime().plusMinutes(45*to).format(formatter)+ " saatinde ulaşacaktır.");
+							tripDetail.add(v.getCompanyName());
+							tripDetail.add((v instanceof Bus)? "Otobüs": (v instanceof Train)? "Tren": "Uçak");
+							tripDetail.add(String.valueOf(v.getVehicleCapacity()));
+							tripDetail.add(v.getBeginTime().plusMinutes(45*to).format(formatter));
+							tripDetail.add("Örnek Fiyat");
+							tripDetail.add(v.getVehicleId());
 						}
 					}
 				}
 			}
-			
 		}
+		return tripDetail;
 	}
 }
