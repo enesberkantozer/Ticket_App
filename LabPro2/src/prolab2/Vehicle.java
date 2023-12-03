@@ -24,6 +24,7 @@ abstract public class Vehicle {
 	private int priceFuel;
 	private ArrayList<Integer> purchasedSeat=new ArrayList<Integer>();
 	
+	
 	public static int vehicleCount=0;
 	public static ArrayList<Vehicle> vehiclesList=new ArrayList<Vehicle>();
 	
@@ -36,7 +37,7 @@ abstract public class Vehicle {
 		new Personel(companyName, vehicleId, "", "", true);
 		new Personel(companyName, vehicleId, "", "", false);
 		new Personel(companyName, vehicleId, "", "", false);
-
+		
 		this.companyName = companyName;
 		this.vehicleId = vehicleId;
 		this.vehicleCapacity = vehicleCapacity;
