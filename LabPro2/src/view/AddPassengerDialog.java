@@ -30,7 +30,7 @@ public class AddPassengerDialog extends JDialog {
 	 * Create the dialog.
 	 */
 	public AddPassengerDialog() {
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 453, 493);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setLayout(new FlowLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
