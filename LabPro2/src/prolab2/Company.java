@@ -73,7 +73,7 @@ public class Company extends User implements IProfitable{
 				String typeRoute = Route.travelNo.get(a).get(0);
 				info = typeRoute.equals("Karayolu") ? Trip.infoBus : 
 					(typeRoute.equals("Demiryolu") ? Trip.infoTrain : Trip.infoAirplane);
-				for(int j = 1; j < Route.travelNo.get(a).size() -1 ; j++) {
+				for(int j = 1; j < Route.travelNo.get(a).size() -1; j++) {
 					
 					String city = Route.travelNo.get(a).get(j).toString() + "-" 
 							+ Route.travelNo.get(a).get(j + 1).toString();
