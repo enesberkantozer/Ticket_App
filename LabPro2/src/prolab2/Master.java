@@ -9,9 +9,8 @@ public class Master {
 		
 		Admin.main(null);
 		Company.main(null);
-		/*Trip.main(null);
+		Trip.main(null);
 		LoginFrame loginFrame=new LoginFrame();
-		loginFrame.execute(0);*/
-		Vehicle.vehiclesList.get(1).arac.execute();
+		loginFrame.execute(0);
 	}
 }

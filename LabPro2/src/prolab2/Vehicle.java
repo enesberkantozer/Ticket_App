@@ -144,7 +144,7 @@ abstract public class Vehicle {
 		int rdnFor;
 		do {
 			rdnFor=rdn.nextInt(vehicleCapacity);
-		}while(rdnFor!=0);
+		}while(rdnFor<5);
 		
 		for (int i = 0; i < rdnFor; i++) {
 			int rdnSeat=rdn.nextInt(vehicleCapacity);
