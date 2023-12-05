@@ -133,7 +133,6 @@ public class Trip {
 		 * timeAirplane.put("Ankara-İstanbul",); timeAirplane.put("Konya-İstanbul", );
 		 */
 		//System.out.println(seferBul("İstanbul","Eskişehir", LocalDateTime.of(2023,12,4,0,0)));
-		//System.out.println(Company.companysList.get(0).profit("F"));
 
 	}
 

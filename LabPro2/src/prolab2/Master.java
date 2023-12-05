@@ -12,5 +12,7 @@ public class Master {
 		Trip.main(null);
 		LoginFrame loginFrame=new LoginFrame();
 		loginFrame.execute(0);
+		System.out.println(Company.companysList.get(0).profit("F"));
+
 	}
 }
