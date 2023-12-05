@@ -172,6 +172,7 @@ public class CompanyFrame extends JFrame {
 			}
 			@Override
 			public void windowOpened(WindowEvent e) {
+				company.profit(company.getCompanyName());
 				lblProfit.setText(String.valueOf(Math.abs(company.ciro)));
 				lblProfit.setForeground((company.ciro<0)? Color.RED:Color.GREEN);
 				if(Vehicle.vehicleCount>0) {

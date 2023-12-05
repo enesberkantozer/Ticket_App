@@ -103,7 +103,7 @@ public class Company extends User implements IProfitable {
 				: (dataPass[0].equals("Tren") ? Trip.infoTrain : Trip.infoAirplane);
 		Integer[] dizi = info.get(dataPass[1] + "-" + dataPass[2]);
 		profitEarn = dizi[0];
-		//ciro += profitEarn;
+		ciro += profitEarn;
 	}
 
 	public void addPsngrPrice(int travelNo) {
@@ -120,7 +120,7 @@ public class Company extends User implements IProfitable {
 				: (dataPass[0].equals("Demiryolu") ? Trip.infoTrain : Trip.infoAirplane);
 		Integer[] dizi = info.get(dataPass[1] + "-" + dataPass[2]);
 		profitEarn = dizi[0];
-		//ciro += profitEarn;
+		ciro += profitEarn;
 	}
 
 	public static void main(String[] args) {
