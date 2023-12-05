@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -57,7 +58,7 @@ public class CompanyFrame extends JFrame {
 	public CompanyFrame(Company company) {
 		setTitle(company.getCompanyName()+" Firması");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 883, 618);
+		setBounds(100, 100, 883, 663);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -157,6 +158,12 @@ public class CompanyFrame extends JFrame {
 		btnNewButton_1_1.setBounds(340, 491, 165, 56);
 		contentPane.add(btnNewButton_1_1);
 		
+		JLabel lblProfit = new JLabel("New label");
+		lblProfit.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblProfit.setHorizontalAlignment(SwingConstants.CENTER);
+		lblProfit.setBounds(340, 557, 189, 50);
+		contentPane.add(lblProfit);
+		
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosed(WindowEvent e) {
@@ -165,6 +172,8 @@ public class CompanyFrame extends JFrame {
 			}
 			@Override
 			public void windowOpened(WindowEvent e) {
+				lblProfit.setText(String.valueOf(Math.abs(company.ciro)));
+				lblProfit.setForeground((company.ciro<0)? Color.RED:Color.GREEN);
 				if(Vehicle.vehicleCount>0) {
 					DateTimeFormatter formatter=DateTimeFormatter.ofPattern("dd.MMM.yyyy HH:mm");
 					ArrayList<Vehicle> vehicles = Vehicle.vehiclesList;

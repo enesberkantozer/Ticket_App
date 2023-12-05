@@ -16,10 +16,6 @@ public class Trip {
 	public static Map<String, Integer[]> infoTrain = new HashMap<>();
 	public static Map<String, Integer[]> infoAirplane = new HashMap<>();
 
-	/* public static Map<String, LocalDateTime[]> timeBus = new HashMap<>();
-	public static Map<String, LocalDateTime[]> timeTrain = new HashMap<>();
-	public static Map<String, LocalDateTime[]> timeAirplane = new HashMap<>(); */
-
 	public static void main(String[] args) {
 
 		new Route(1, new ArrayList<String>(List.of("Demiryolu", "İstanbul", "Kocaeli", "Bilecik", "Eskişehir", "Ankara",
@@ -28,8 +24,7 @@ public class Trip {
 		new Route(2, new ArrayList<String>(List.of("Demiryolu", "İstanbul", "Kocaeli", "Bilecik", "Eskişehir", "Konya", 
 				"Eskişehir", "Bilecik", "Kocaeli", "İstanbul")));
 		
-		new Route(3, new ArrayList<String>(List.of("Karayolu", "İstanbul", "Kocaeli", "Ankara", "Kocaeli", "İstanbul",
-				"Kocaeli", "Ankara", "Kocaeli", "İstanbul")));
+		new Route(3, new ArrayList<String>(List.of("Karayolu", "İstanbul", "Kocaeli", "Ankara", "Kocaeli", "İstanbul")));
 		
 		new Route(4, new ArrayList<String>(List.of("Karayolu", "İstanbul", "Kocaeli", "Eskişehir", "Konya",
 				"Eskişehir", "Kocaeli", "İstanbul")));
@@ -91,47 +86,7 @@ public class Trip {
 		infoAirplane.put("Ankara-İstanbul", new Integer[] { 1000, 250 });
 		infoAirplane.put("Konya-İstanbul", new Integer[] { 1200, 300 });
 
-		/* ArrayList<String> busRoute = new ArrayList<>();
-
-		busRoute.add("İstanbul-Kocaeli");
-		busRoute.add("İstanbul-Eskişehir");
-		busRoute.add("İstanbul-Ankara");
-		busRoute.add("İstanbul-Konya");
-		busRoute.add("Kocaeli-Eskişehir");
-		busRoute.add("Kocaeli-Ankara");
-		busRoute.add("Kocaeli-Konya");
-		busRoute.add("Eskişehir-Konya");
-
-		busRoute.add("Kocaeli-İstanbul");
-		busRoute.add("Eskişehir-İstanbul");
-		busRoute.add("Ankara-İstanbul");
-		busRoute.add("Konya-İstanbul");
-		busRoute.add("Eskişehir-Kocaeli");
-		busRoute.add("Ankara-Kocaeli");
-		busRoute.add("Konya-Kocaeli");
-		busRoute.add("Konya-Eskişehir");
-
 		
-		 * timeTrain.put("İstanbul-Kocaeli", ); timeTrain.put("İstanbul-Bilecik", );
-		 * timeTrain.put("İstanbul-Eskişehir", ); timeTrain.put("İstanbul-Ankara", );
-		 * timeTrain.put("İstanbul-Konya",); timeTrain.put("Kocaeli-Bilecik", );
-		 * timeTrain.put("Kocaeli-Eskişehir", ); timeTrain.put("Kocaeli-Ankara", );
-		 * timeTrain.put("Kocaeli-Konya", ); timeTrain.put("Bilecik-Eskişehir", );
-		 * timeTrain.put("Bilecik-Ankara", ); timeTrain.put("Bilecik-Konya", );
-		 * timeTrain.put("Eskişehir-Ankara", ); timeTrain.put("Eskişehir-Konya", );
-		 * 
-		 * timeTrain.put("Kocaeli-İstanbul",); timeTrain.put("Bilecik-İstanbul", );
-		 * timeTrain.put("Eskişehir-İstanbul", ); timeTrain.put("Ankara-İstanbul", );
-		 * timeTrain.put("Konya-İstanbul", ); timeTrain.put("Bilecik-Kocaeli",);
-		 * timeTrain.put("Eskişehir-Kocaeli", ); timeTrain.put("Ankara-Kocaeli", );
-		 * timeTrain.put("Konya-Kocaeli", ); timeTrain.put("Eskişehir-Bilecik",);
-		 * timeTrain.put("Ankara-Bilecik", ); timeTrain.put("Konya-Bilecik", );
-		 * timeTrain.put("Ankara-Eskişehir",); timeTrain.put("Konya-Eskişehir", );
-		 * 
-		 * timeAirplane.put("İstanbul-Ankara",); timeAirplane.put("İstanbul-Konya", );
-		 * 
-		 * timeAirplane.put("Ankara-İstanbul",); timeAirplane.put("Konya-İstanbul", );
-		 */
 		//System.out.println(seferBul("İstanbul","Eskişehir", LocalDateTime.of(2023,12,4,0,0)));
 
 	}
@@ -182,7 +137,15 @@ public class Trip {
 							tripDetail.add((v instanceof Bus)? "Otobüs": (v instanceof Train)? "Tren": "Uçak");
 							tripDetail.add(String.valueOf(v.getVehicleCapacity()));
 							tripDetail.add(v.getBeginTime().plusMinutes(45*to).format(formatter));
-							tripDetail.add("Örnek Fiyat");
+							if(v instanceof Bus) {
+								tripDetail.add(String.valueOf(infoBus.get(kalkis+"-"+varis)[0]));
+							}
+							else if(v instanceof Train) {
+								tripDetail.add(String.valueOf(infoTrain.get(kalkis+"-"+varis)[0]));
+							}
+							else if(v instanceof Airplane) {
+								tripDetail.add(String.valueOf(infoAirplane.get(kalkis+"-"+varis)[0]));
+							}
 							tripDetail.add(v.getVehicleId());
 						}
 					}

@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -26,7 +27,7 @@ public class VehicleTemplate {
 		}
 	}
 	
-	public void execute(TravelSearchFrame returnFrame) {
+	public void execute(TravelSearchFrame returnFrame,String trip[],LocalDateTime date) {
 		frame.setVisible(true);
 		frame.addWindowListener(new WindowAdapter() {
 			@Override
@@ -36,12 +37,13 @@ public class VehicleTemplate {
 			
 		});
 		for (int i = 0; i < buttons.size(); i++) {
+			JButton setNaNButton=buttons.get(i);
 			buttons.get(i).addActionListener(new ActionListener() {
 				
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					// TODO Auto-generated method stub
-					AddPassengerDialog.main(null);
+					AddPassengerDialog dialog=new AddPassengerDialog(setNaNButton,trip,date);
 				}
 			});
 		}

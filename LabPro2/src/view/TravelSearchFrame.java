@@ -78,7 +78,8 @@ public class TravelSearchFrame {
 				String id=table.getValueAt(table.getSelectedRow(), 5).toString();
 				for (int i = 0; i < Vehicle.vehiclesList.size(); i++) {
 					if(id.equals(Vehicle.vehiclesList.get(i).getVehicleId())) {
-						Vehicle.vehiclesList.get(i).arac.execute(me);
+						String data[]= {table.getValueAt(table.getSelectedRow(), 1).toString(),begin,end,table.getValueAt(table.getSelectedRow(), 0).toString()};
+						Vehicle.vehiclesList.get(i).arac.execute(me,data,date);
 					}
 				}
 			}
