@@ -15,22 +15,23 @@ public class Trip {
 
 	public static void main(String[] args) {
 
-		new Route(0,new ArrayList<String>(List.of("")));
+		new Route(0, new ArrayList<String>(List.of("")));
 		new Route(1, new ArrayList<String>(List.of("Demiryolu", "İstanbul", "Kocaeli", "Bilecik", "Eskişehir", "Ankara",
 				"Eskişehir", "Bilecik", "Kocaeli", "İstanbul")));
-		
-		new Route(2, new ArrayList<String>(List.of("Demiryolu", "İstanbul", "Kocaeli", "Bilecik", "Eskişehir", "Konya", 
+
+		new Route(2, new ArrayList<String>(List.of("Demiryolu", "İstanbul", "Kocaeli", "Bilecik", "Eskişehir", "Konya",
 				"Eskişehir", "Bilecik", "Kocaeli", "İstanbul")));
-		
-		new Route(3, new ArrayList<String>(List.of("Karayolu", "İstanbul", "Kocaeli", "Ankara", "Kocaeli", "İstanbul")));
-		
-		new Route(4, new ArrayList<String>(List.of("Karayolu", "İstanbul", "Kocaeli", "Eskişehir", "Konya",
-				"Eskişehir", "Kocaeli", "İstanbul")));
-		
+
+		new Route(3,
+				new ArrayList<String>(List.of("Karayolu", "İstanbul", "Kocaeli", "Ankara", "Kocaeli", "İstanbul")));
+
+		new Route(4, new ArrayList<String>(
+				List.of("Karayolu", "İstanbul", "Kocaeli", "Eskişehir", "Konya", "Eskişehir", "Kocaeli", "İstanbul")));
+
 		new Route(5, new ArrayList<String>(List.of("Havayolu", "İstanbul", "Konya", "İstanbul")));
 		new Route(6, new ArrayList<String>(List.of("Havayolu", "İstanbul", "Ankara", "İstanbul")));
 
-		infoBus.put("İstanbul-Kocaeli", new Integer[] { 50, 100 }); //  fiyat, km
+		infoBus.put("İstanbul-Kocaeli", new Integer[] { 50, 100 }); // fiyat, km
 		infoBus.put("İstanbul-Eskişehir", new Integer[] { 150, 300 });
 		infoBus.put("İstanbul-Ankara", new Integer[] { 300, 500 });
 		infoBus.put("İstanbul-Konya", new Integer[] { 300, 600 });
@@ -87,39 +88,42 @@ public class Trip {
 
 	public static ArrayList<String> seferBul(String kalkis, String varis, LocalDateTime date) {
 
-		ArrayList<String> tripDetail=new ArrayList<String>();
-		DateTimeFormatter formatter=DateTimeFormatter.ofPattern("dd.MMM.yyyy HH:mm");
+		ArrayList<String> tripDetail = new ArrayList<String>();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MMM.yyyy HH:mm");
 		for (int i = 1; i <= Route.travelNo.size(); i++) {
-			ArrayList<String> route=Route.travelNo.get(i);
-			if(route.contains(kalkis)&&route.contains(varis)) {
-				System.out.println(i);
-				for (int j = 0; j < Vehicle.vehiclesList.size(); j++) {
-					Vehicle v=Vehicle.vehiclesList.get(j);
-					if(date.getDayOfYear()<=v.getBeginTime().getDayOfYear()&& date.getYear()<=v.getBeginTime().getYear()) {
-						if(v.getVehicleTravelNo()==i) {
-							System.out.print(v.getCompanyName()+" firmasının ");
-							System.out.print(v.getVehicleTravelNo()+" sefer sayılı ");
-							System.out.print(v.getVehicleCapacity()+" kişilik ");
-							System.out.print((v instanceof Bus)? "otobüsü ": (v instanceof Train)? "treni ": "uçağı ");
-							System.out.print(v.getBeginTime().format(formatter)+" saat ve ");
-							System.out.print(route.get(1)+" kalkışlı seferi vardır. ");
-							System.out.print(kalkis+" şehrine ");
-							int to=route.indexOf(kalkis)-1;
-							System.out.println(v.getBeginTime().plusMinutes(45*to).format(formatter)+ " saatinde ulaşacaktır.");
-							tripDetail.add(v.getCompanyName());
-							tripDetail.add((v instanceof Bus)? "Otobüs": (v instanceof Train)? "Tren": "Uçak");
-							tripDetail.add(String.valueOf(v.getVehicleCapacity()));
-							tripDetail.add(v.getBeginTime().plusMinutes(45*to).format(formatter));
-							if(v instanceof Bus) {
-								tripDetail.add(String.valueOf(infoBus.get(kalkis+"-"+varis)[0]));
+			ArrayList<String> route = Route.travelNo.get(i);
+			if (route != null) {
+				if (route.contains(kalkis) && route.contains(varis)) {
+					System.out.println(i);
+					for (int j = 0; j < Vehicle.vehiclesList.size(); j++) {
+						Vehicle v = Vehicle.vehiclesList.get(j);
+						if (date.getDayOfYear() <= v.getBeginTime().getDayOfYear()
+								&& date.getYear() <= v.getBeginTime().getYear()) {
+							if (v.getVehicleTravelNo() == i) {
+								System.out.print(v.getCompanyName() + " firmasının ");
+								System.out.print(v.getVehicleTravelNo() + " sefer sayılı ");
+								System.out.print(v.getVehicleCapacity() + " kişilik ");
+								System.out.print(
+										(v instanceof Bus) ? "otobüsü " : (v instanceof Train) ? "treni " : "uçağı ");
+								System.out.print(v.getBeginTime().format(formatter) + " saat ve ");
+								System.out.print(route.get(1) + " kalkışlı seferi vardır. ");
+								System.out.print(kalkis + " şehrine ");
+								int to = route.indexOf(kalkis) - 1;
+								System.out.println(v.getBeginTime().plusMinutes(45 * to).format(formatter)
+										+ " saatinde ulaşacaktır.");
+								tripDetail.add(v.getCompanyName());
+								tripDetail.add((v instanceof Bus) ? "Otobüs" : (v instanceof Train) ? "Tren" : "Uçak");
+								tripDetail.add(String.valueOf(v.getVehicleCapacity()));
+								tripDetail.add(v.getBeginTime().plusMinutes(45 * to).format(formatter));
+								if (v instanceof Bus) {
+									tripDetail.add(String.valueOf(infoBus.get(kalkis + "-" + varis)[0]));
+								} else if (v instanceof Train) {
+									tripDetail.add(String.valueOf(infoTrain.get(kalkis + "-" + varis)[0]));
+								} else if (v instanceof Airplane) {
+									tripDetail.add(String.valueOf(infoAirplane.get(kalkis + "-" + varis)[0]));
+								}
+								tripDetail.add(v.getVehicleId());
 							}
-							else if(v instanceof Train) {
-								tripDetail.add(String.valueOf(infoTrain.get(kalkis+"-"+varis)[0]));
-							}
-							else if(v instanceof Airplane) {
-								tripDetail.add(String.valueOf(infoAirplane.get(kalkis+"-"+varis)[0]));
-							}
-							tripDetail.add(v.getVehicleId());
 						}
 					}
 				}

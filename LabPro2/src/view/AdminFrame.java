@@ -76,8 +76,8 @@ public class AdminFrame extends JFrame {
 		btnSeiliFirmaySil.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (table.getSelectedRow() >= 0) {
-					tablemodel.removeRow(table.getSelectedRow());
 					Company.companysList.remove(table.getSelectedRow());
+					tablemodel.removeRow(table.getSelectedRow());
 					Company.companyCount--;
 				}
 			}
