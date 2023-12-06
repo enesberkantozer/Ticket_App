@@ -27,6 +27,7 @@ public class Company extends User implements IProfitable {
 		companysList.add(this);
 		companyCount++;
 		Trip.main(null);
+		profit(companyName);
 	}
 
 	public String getCompanyName() {
