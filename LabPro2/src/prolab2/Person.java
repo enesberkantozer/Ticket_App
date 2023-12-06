@@ -41,9 +41,4 @@ abstract public class Person {
 	public void setPersonSurname(String personSurname) {
 		this.personSurname = personSurname;
 	}
-
-	public static void main(String[] args) {
-//		Bu classta Ad ve soyad bilgileri icermelidir
-	}
-
 }

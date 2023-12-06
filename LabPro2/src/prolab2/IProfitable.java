@@ -1,5 +1,8 @@
 package prolab2;
 
 public interface IProfitable {
-//	Bu Interface icinde gunluk kar hesabı ve genel kar-zar hesabı metotları yer almalıdır
+	
+	public void profit(String companyName);
+	public void addPsngrPrice(String[] dataPass);
+	public void addPsngrPrice(int travelNo);
 }

@@ -32,12 +32,4 @@ public class Customer{
 	public void setIdTr(int idTr) {
 		this.idTr = idTr;
 	}
-
-
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
-
 }

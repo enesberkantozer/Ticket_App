@@ -3,7 +3,6 @@ package prolab2;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class Company extends User implements IProfitable {
@@ -12,7 +11,7 @@ public class Company extends User implements IProfitable {
 	private String username;
 	private String password;
 
-	public int ciro = 0;// profitEarn- profit(companyName);
+	public int ciro = 0;
 
 	public static int companyCount = 0;
 	public static ArrayList<Company> companysList = new ArrayList<Company>();
@@ -125,11 +124,6 @@ public class Company extends User implements IProfitable {
 
 	public static void main(String[] args) {
 
-// 		metotlar user'dan override edilecek
-//		Firma paneline kullanıcı adı ve sifre ile giris yapılmalıdır. Her firma icin arac bilgisi bilgileri de kaydedilmelidir
-// 		Arac ekleme ve cıkarma yapılabilir.
-// 		Sefer ekleme ve cıkarma yapılabilir.
-// 		Gunluk kar hesabı yapılabilir. Gunluk kar hesabı yolcu ucretleri, hizmet bedeli, personel maliyeti ve yakıt maliyeti dikkate alınarak hesaplanmalıdır.
 		new Bus("A", "oto1", 20, LocalDateTime.of(2023, 12, 4, 00, 00), 3, "Benzin", 5000, 2000, 10);
 		new Bus("A", "oto2", 15, LocalDateTime.of(2023, 12, 4, 01, 00), 3, "Benzin", 5000, 2000, 10);
 

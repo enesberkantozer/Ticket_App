@@ -2,7 +2,6 @@ package prolab2;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Random;
 
 import view.Vehicle15;
@@ -167,10 +166,4 @@ abstract public class Vehicle {
 			}
 		}
 	}
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
-
 }

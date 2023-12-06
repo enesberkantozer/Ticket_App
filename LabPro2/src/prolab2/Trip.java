@@ -1,12 +1,9 @@
 package prolab2;
 
-import java.security.PublicKey;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-//Her seferin bir aracı, guzergahı, zamanı, fiyatı gibi bilgiler bulunmalıdır
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -85,36 +82,11 @@ public class Trip {
 
 		infoAirplane.put("Ankara-İstanbul", new Integer[] { 1000, 250 });
 		infoAirplane.put("Konya-İstanbul", new Integer[] { 1200, 300 });
-
-		
-		//System.out.println(seferBul("İstanbul","Eskişehir", LocalDateTime.of(2023,12,4,0,0)));
-
 	}
 
 	public static ArrayList<String> seferBul(String kalkis, String varis, LocalDateTime date) {
-//		for (int i = 0; i < busRoute.size(); i++) {
-//			String[] cities = busRoute.get(i).split("-");
-//
-//			// Ayırılan şehirleri ayrı değişkenlere atayabilir veya kullanabilirsiniz
-//			String departureCity = cities[0]; // Kocaeli
-//			String arrivalCity = cities[1]; // İstanbul
-//
-//			for (int j = 1; j < Route.travelNo.size(); j++) {
-//				if (Route.travel.get(0).equals("Karayolu") && Route.travel.get(j).contains(cities[0])
-//						&& Route.travelNo.get(j ).contains(cities[1])) {
-//					System.out.println("Girdi");
-//					for (int k = 0; k < Vehicle.vehiclesList.size(); k++) {
-//						if (Vehicle.vehiclesList.get(k).getVehicleTravelNo() == (i + 1)) {
-//							timeBus.put(busRoute.get(i), new LocalDateTime[] { Vehicle.vehiclesList.get(k).getBeginTime() });
-//							System.out.println(Vehicle.vehiclesList.get(k).getBeginTime());
-//						}
-//
-//					}
-//				}
-//			}
-//		}
+
 		ArrayList<String> tripDetail=new ArrayList<String>();
-		//Master.main(null);
 		DateTimeFormatter formatter=DateTimeFormatter.ofPattern("dd.MMM.yyyy HH:mm");
 		for (int i = 1; i <= Route.travelNo.size(); i++) {
 			ArrayList<String> route=Route.travelNo.get(i);

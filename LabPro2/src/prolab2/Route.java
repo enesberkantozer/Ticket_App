@@ -3,6 +3,7 @@ package prolab2;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+
 public class Route {
 	
 	public static ArrayList<String> travel = new ArrayList<>();
@@ -15,9 +16,4 @@ public class Route {
 		routeCount++;
 	}
 
-
-	public static void main(String[] args) {
-//		 Seferin kalkıs, varıs noktalarını ve sefere ait mesafe bilgilerini içermeli
-				
-	}
 }

@@ -16,9 +16,4 @@ public class Personel extends Person{
 	public void setDriver(boolean isDriver) {
 		this.isDriver = isDriver;
 	}
-
-	public static void main(String[] args) {
-//		Bu classta personele ait bilgiler yer alacaktır.
-	}
-
 }
