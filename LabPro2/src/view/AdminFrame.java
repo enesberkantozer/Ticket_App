@@ -9,6 +9,7 @@ import java.awt.Font;
 import javax.swing.table.DefaultTableModel;
 
 import prolab2.Company;
+import prolab2.Vehicle;
 
 import javax.swing.ListSelectionModel;
 import java.awt.event.ActionListener;
@@ -76,6 +77,13 @@ public class AdminFrame extends JFrame {
 		btnSeiliFirmaySil.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (table.getSelectedRow() >= 0) {
+					for (int i = 0; i < Vehicle.vehiclesList.size(); i++) {
+						Vehicle v=Vehicle.vehiclesList.get(i);
+						if(v.getCompanyName().equals(table.getValueAt(table.getSelectedRow(), 0))) {
+							Vehicle.vehiclesList.remove(i);
+							i--;
+						}
+					}
 					Company.companysList.remove(table.getSelectedRow());
 					tablemodel.removeRow(table.getSelectedRow());
 					Company.companyCount--;
