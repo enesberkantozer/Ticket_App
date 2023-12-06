@@ -241,12 +241,23 @@ public class LoginFrame extends JFrame {
 		lblAdminPassword.setBounds(10, 146, 186, 50);
 		AdminPanel.add(lblAdminPassword);
 		
+		JLabel lblAdminErrorMessage = new JLabel("");
+		lblAdminErrorMessage.setHorizontalAlignment(SwingConstants.CENTER);
+		lblAdminErrorMessage.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblAdminErrorMessage.setBounds(10, 7, 741, 36);
+		AdminPanel.add(lblAdminErrorMessage);
+		
 		JButton btnAdminLogin = new JButton("Giriş Yap");
 		btnAdminLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				AdminFrame adminFrame= new AdminFrame();
-				adminFrame.execute();
-				dispose();
+				if(adminUsername.getText().equals("admin")&&adminPassword.getText().equals("1234")) {
+					AdminFrame adminFrame= new AdminFrame();
+					adminFrame.execute();
+					dispose();
+				}
+				else {
+					lblAdminErrorMessage.setText("Kullanıcı adı veya şifre yanlış");
+				}
 			}
 		});
 		btnAdminLogin.setFont(new Font("Tahoma", Font.BOLD, 20));

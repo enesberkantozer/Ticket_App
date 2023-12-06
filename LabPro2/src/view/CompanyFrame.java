@@ -110,8 +110,7 @@ public class CompanyFrame extends JFrame {
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(table.getSelectedRow() >= 0) {
-					tablemodel.removeRow(table.getSelectedRow());
-					for (int i = 0; i < Vehicle.vehicleCount; i++) {
+					for (int i = 0; i < Vehicle.vehiclesList.size(); i++) {
 						if(Vehicle.vehiclesList.get(i).getCompanyName().equals(company.getCompanyName())&&
 								Vehicle.vehiclesList.get(i).getVehicleId().equals(table.getValueAt(table.getSelectedRow(), 0).toString())) {
 							Vehicle.vehiclesList.remove(i);
@@ -119,6 +118,7 @@ public class CompanyFrame extends JFrame {
 							break;
 						}
 					}
+					tablemodel.removeRow(table.getSelectedRow());
 				}
 			}
 		});
@@ -175,12 +175,12 @@ public class CompanyFrame extends JFrame {
 				company.profit(company.getCompanyName());
 				lblProfit.setText(String.valueOf(Math.abs(company.ciro)));
 				lblProfit.setForeground((company.ciro<0)? Color.RED:Color.GREEN);
-				if(Vehicle.vehicleCount>0) {
+				if(Vehicle.vehiclesList.size()>0) {
 					DateTimeFormatter formatter=DateTimeFormatter.ofPattern("dd.MMM.yyyy HH:mm");
 					ArrayList<Vehicle> vehicles = Vehicle.vehiclesList;
-					for (int i = 0; i < Vehicle.vehicleCount; i++) {
+					for (int i = 0; i < Vehicle.vehiclesList.size(); i++) {
 						if(vehicles.get(i).getCompanyName().equals(company.getCompanyName())) {
-							String[] data= {vehicles.get(i).getVehicleId(),String.valueOf(vehicles.get(i).getVehicleTravelNo()),
+							String[] data= {vehicles.get(i).getVehicleId(),String.valueOf((vehicles.get(i).getVehicleTravelNo()==0)?"Boşta":vehicles.get(i).getVehicleTravelNo()),
 									String.valueOf(vehicles.get(i).getVehicleCapacity()), vehicles.get(i).getBeginTime().format(formatter),
 									vehicles.get(i).getTypeFuel(), String.valueOf(vehicles.get(i).getPriceFuel()), 
 									String.valueOf(vehicles.get(i).getCostDriver()), String.valueOf(vehicles.get(i).getCostService())};

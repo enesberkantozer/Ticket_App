@@ -15,6 +15,7 @@ public class Trip {
 
 	public static void main(String[] args) {
 
+		new Route(0,new ArrayList<String>(List.of("")));
 		new Route(1, new ArrayList<String>(List.of("Demiryolu", "İstanbul", "Kocaeli", "Bilecik", "Eskişehir", "Ankara",
 				"Eskişehir", "Bilecik", "Kocaeli", "İstanbul")));
 		

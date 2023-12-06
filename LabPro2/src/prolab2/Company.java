@@ -78,9 +78,8 @@ public class Company extends User implements IProfitable {
 				price += (v.getCostDriver() + v.getCostService()) * 4;
 				int a = v.getVehicleTravelNo();
 				Map<String, Integer[]> info = new HashMap<>();
-				String typeRoute = Route.travelNo.get(a).get(0);
-				info = typeRoute.equals("Karayolu") ? Trip.infoBus
-						: (typeRoute.equals("Demiryolu") ? Trip.infoTrain : Trip.infoAirplane);
+				info = ((v instanceof Bus) ? Trip.infoBus
+						: (v instanceof Train) ? Trip.infoTrain : Trip.infoAirplane);
 				for (int j = 1; j < Route.travelNo.get(a).size() - 1; j++) {
 
 					String city = Route.travelNo.get(a).get(j).toString() + "-"
@@ -106,20 +105,23 @@ public class Company extends User implements IProfitable {
 	}
 
 	public void addPsngrPrice(int travelNo) {
-		int profitEarn=0;
-		Map<String, Integer[]> info = new HashMap<>();
-		String dataPass[] = new String[3];
-		dataPass[0] = Route.travelNo.get(travelNo).get(0);
-		dataPass[1] = Route.travelNo.get(travelNo).get(1);
-		dataPass[2] = Route.travelNo.get(travelNo).get(Route.travelNo.get(travelNo).size() / 2);
-		if (Route.travelNo.get(travelNo).size() % 2 == 1) {
-			dataPass[2] = Route.travelNo.get(travelNo).get(Route.travelNo.get(travelNo).size() / 2 + 1);
+		if(travelNo!=0) {
+			int profitEarn=0;
+			Map<String, Integer[]> info = new HashMap<>();
+			String dataPass[] = new String[3];
+			dataPass[0] = Route.travelNo.get(travelNo).get(0);
+			dataPass[1] = Route.travelNo.get(travelNo).get(1);
+			dataPass[2] = Route.travelNo.get(travelNo).get(Route.travelNo.get(travelNo).size() / 2);
+			if (Route.travelNo.get(travelNo).size() % 2 == 1) {
+				dataPass[2] = Route.travelNo.get(travelNo).get(Route.travelNo.get(travelNo).size() / 2 + 1);
+			}
+			info = dataPass[0].equals("Karayolu") ? Trip.infoBus
+					: (dataPass[0].equals("Demiryolu") ? Trip.infoTrain : Trip.infoAirplane);
+			Integer[] dizi = info.get(dataPass[1] + "-" + dataPass[2]);
+			profitEarn = dizi[0];
+			ciro += profitEarn;
 		}
-		info = dataPass[0].equals("Karayolu") ? Trip.infoBus
-				: (dataPass[0].equals("Demiryolu") ? Trip.infoTrain : Trip.infoAirplane);
-		Integer[] dizi = info.get(dataPass[1] + "-" + dataPass[2]);
-		profitEarn = dizi[0];
-		ciro += profitEarn;
+		
 	}
 
 	public static void main(String[] args) {

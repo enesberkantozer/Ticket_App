@@ -300,7 +300,7 @@ public class AddVecihlePanel extends JDialog {
 						Integer.parseInt(comboHour.getSelectedItem().toString()),
 						Integer.parseInt(comboMinute.getSelectedItem().toString()));
 				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MMM.yyyy HH:mm");
-				int travelNo = Integer.parseInt(comboRoute.getSelectedItem().toString().substring(0, 1));
+				int travelNo = Integer.parseInt((comboRoute.getSelectedItem().toString().equals("Boşta")) ? "0" : comboRoute.getSelectedItem().toString().substring(0, 1));
 				int capacity = Integer.parseInt(comboCapacity.getSelectedItem().toString());
 				if (rdbtnBus.isSelected()) {
 					new Bus(args, txtVehicleID.getText(), capacity, date, travelNo,
@@ -315,7 +315,7 @@ public class AddVecihlePanel extends JDialog {
 							comboTypeOfFuel.getSelectedItem().toString(), Integer.parseInt(txtDriver.getText()),
 							Integer.parseInt(txtService.getText()), Integer.parseInt(txtPriceOfFuel.getText()));
 				}
-				String[] data = { txtVehicleID.getText(), comboRoute.getSelectedItem().toString().substring(0, 1),
+				String[] data = { txtVehicleID.getText(), (comboRoute.getSelectedItem().toString().equals("Boşta")) ? "Boşta" : comboRoute.getSelectedItem().toString().substring(0, 1),
 						comboCapacity.getSelectedItem().toString(), date.format(formatter),
 						comboTypeOfFuel.getSelectedItem().toString(), txtPriceOfFuel.getText(), txtDriver.getText(),
 						txtService.getText() };
